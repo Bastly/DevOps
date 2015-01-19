@@ -5,3 +5,4 @@ buildessential_packages:
   - automake
   - build-essential
   - g++
+  - git

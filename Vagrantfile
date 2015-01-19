@@ -6,6 +6,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.network "forwarded_port", guest: 80, host: 8080
 
   config.vm.provision :ansible do |ansible|
+    ansible.host_key_checking = false
     ansible.playbook = "playbook.yml"
   end
 end
