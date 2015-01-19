@@ -1,5 +1,5 @@
 ---
-- hosts: all
+- hosts: dev
   sudo: true
   vars:
     nodejs_version: "0.10.35*"
