@@ -1,0 +1,35 @@
+---
+- name: Zeromq | Make sure the zeromq dependencies are installed
+  apt: pkg={{ item }}
+  with_items:
+    - binutils-doc 
+    - libtool
+    - pkg-config    
+    - uuid-dev
+    - libzmq-dev
+
+- name: Zeromq | Download zeromq version checker
+  command: wget https://raw.githubusercontent.com/zeromq/pyzmq/master/zmqversion.py chdir=/tmp creates=/tmp/zmqversion.py
+
+- name: Zeromq | Check zeromq is not installed
+  shell: python /tmp/zmqversion.py 
+  register: wanted
+
+- name: Zeromq | Download the zeromq source in /tmp if not yet present
+  command: wget http://download.zeromq.org/zeromq-{{ zeromq_version }}.tar.gz chdir=/tmp creates=/tmp/zeromq-{{ zeromq_version }}.tar.gz
+  when: wanted.stdout_lines[1] != "{{zeromq_version}}"
+
+- name: Zeromq | Untar the zeromq source in /tmp
+  command: tar -xvzf /tmp/zeromq-{{ zeromq_version }}.tar.gz chdir=/tmp creates=/tmp/zeromq-{{ zeromq_version }}
+  when: wanted.stdout_lines[1] != "{{zeromq_version}}"
+
+- name: Zeromq | configure and make the zeromq source
+  command: ./configure chdir=/tmp/zeromq-{{ zeromq_version }}
+  when: wanted.stdout_lines[1] != "{{zeromq_version}}"
+
+- name: Zeromq | make install zeromq
+  command: make install chdir=/tmp/zeromq-{{ zeromq_version }}
+  when: wanted.stdout_lines[1] != "{{zeromq_version}}"
+
+- name: Zeromq | make install zeromq
+  command: ldconfig

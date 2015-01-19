@@ -1,0 +1,14 @@
+# file: nodejs/tasks/package.yml
+
+- name: node.js | Make sure the ansible required dependencies are installed
+  apt:
+    pkg: python-pycurl
+    state: present
+
+- name: nodejs | Add the nodejs repository with the node script
+  shell: curl -sL https://deb.nodesource.com/setup | sudo bash -
+
+- name: node.js | Install the node.js package
+  apt:
+    pkg: nodejs={{nodejs_version}}
+    state: present

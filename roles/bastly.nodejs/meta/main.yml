@@ -1,0 +1,25 @@
+---
+galaxy_info:
+  author: Alex Vidal
+  description: nodejs installer from source or package from nodeSource
+  company: Bastly http://bastly.com
+  # Some suggested licenses:
+  # - BSD (default)
+  # - MIT
+  # - GPLv2
+  # - GPLv3
+  # - Apache
+  # - CC-BY
+  license: license (GPLv2, CC-BY, etc)
+  min_ansible_version: 1.2
+  platforms:
+  - name: Ubuntu
+    versions:
+    - all
+  categories:
+  - system
+  - development
+
+dependencies:
+  - role: bastly.common-build
+    when: nodejs_install_method is defined and nodejs_install_method == "source"

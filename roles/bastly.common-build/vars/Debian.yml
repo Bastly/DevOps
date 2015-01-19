@@ -1,0 +1,7 @@
+# file: build-essential/vars/Debian.yml
+
+buildessential_packages:
+  - autoconf
+  - automake
+  - build-essential
+  - g++

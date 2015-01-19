@@ -1,0 +1,12 @@
+# file: tasks/build/main.yml
+
+- name: Build | Make sure essential build/dev tools for python are installed 
+  apt: pkg={{ item }}
+  with_items:
+    - python-dev
+
+- name: Download pip
+  command: wget https://bootstrap.pypa.io/get-pip.py chdir=/tmp 
+
+- name: Insstall pip
+  command: python get-pip.py chdir=/tmp 
