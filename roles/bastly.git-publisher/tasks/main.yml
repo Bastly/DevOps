@@ -1,7 +1,10 @@
 ---
 # tasks file for roles/bastly.git-publisher
 - name: ensure helloworld repo is available
-  git: repo=git@github.com:goofyahead/Tempo.git dest=/home/vagrant/client accept_hostkey=True
+  git: repo={{ repo_to_install }} dest=/home/vagrant/client accept_hostkey=True
 
 - name: install app npm dependencies.
   npm: path=/home/vagrant/client
+
+- name: start node server
+  shell: chdir=/home/vagrant/client nohup npm start & > log.out
