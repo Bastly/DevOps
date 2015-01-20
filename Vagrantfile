@@ -7,6 +7,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.provision :ansible do |ansible|
     ansible.host_key_checking = false
+    config.ssh.forward_agent = true
     ansible.playbook = "playbook.yml"
   end
 end
