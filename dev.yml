@@ -7,7 +7,8 @@
     zeromq_version: "4.0.5"
     
   roles: 
-    - { role : bastly.nodejs }
-    - { role : bastly.zeromq }
-    - { role : bastly.nodezeromq }
-    - { role : bastly.pythondev }
+    - { role : bastly.logstash-forwarder }
+#    - { role : bastly.nodejs }
+#    - { role : bastly.zeromq }
+#    - { role : bastly.nodezeromq }
+#    - { role : bastly.pythondev }

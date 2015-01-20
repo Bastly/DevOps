@@ -1,2 +1,34 @@
 ---
 # tasks file for roles/bastly.logstash-forwarder
+- name: logstash-forwarder | Make sure the dependencies are installed
+  apt: pkg={{ item }}
+  with_items:
+    - git
+    - ruby-dev
+
+- name: Download go  
+  command: wget https://storage.googleapis.com/golang/go1.4.1.linux-amd64.tar.gz chdir=/tmp creates=/tmp/go1.4.1.linux-amd64.tar.gz
+
+- name: untar go 
+  command: tar -C /usr/local -xzf /tmp/go1.4.1.linux-amd64.tar.gz creates=/usr/local/go 
+
+- name: add export PATH=$PATH:/usr/local/go/bin to /etc/profile
+  lineinfile: dest=/etc/profile line="export PATH=$PATH:/usr/local/go/bin"
+
+- name: add export PATH=$PATH:/usr/local/go/bin to /root/.profile
+  lineinfile: dest=/root/.profile line="export PATH=$PATH:/usr/local/go/bin"
+
+- name: git clone git://github.com/elasticsearch/logstash-forwarder.git
+  git: repo=git://github.com/elasticsearch/logstash-forwarder.git dest=/tmp/logstash-forwarder accept_hostkey=True
+
+- name: go build
+  command: env PATH=$PATH:/usr/local/go/bin go build chdir=/tmp/logstash-forwarder 
+
+- name: gem install fpm 
+  command: gem install fpm 
+
+- name: make deb
+  command: env PATH=$PATH:/usr/local/go/bin make deb chdir=/tmp/logstash-forwarder creates=/tmp/logstash-forwarder/logstash-forwarder_0.3.1_amd64.deb
+
+- name: dpkg -i logstash-forwarder_0.3.1_amd64.deb
+  command: dpkg -i logstash-forwarder_0.3.1_amd64.deb chdir=/tmp/logstash-forwarder creates=/opt/logstash-forwarder 
