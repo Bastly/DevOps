@@ -13,8 +13,9 @@
     - debug: msg="ip of elk is {{ logstash_forwarder_logstash_server }}"
     
   roles: 
-    - { role : bastly.logstash-forwarder }
-    - { role : bastly.nodejs }
-    - { role : bastly.zeromq }
-    - { role : bastly.nodezeromq }
-    - { role : bastly.pythondev }
+    - { role : bastly.nodejs, sudo: yes }
+    - { role : bastly.zeromq, sudo: yes }
+    - { role : bastly.nodezeromq, sudo: yes }
+    - { role : bastly.pythondev, sudo: yes }
+    - { role : bastly.logstash-forwarder, sudo: yes }
+    - { role : bastly.git-publisher}
