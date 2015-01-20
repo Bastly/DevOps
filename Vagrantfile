@@ -22,6 +22,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         "dev" => ["dev1"]
     }
     ansible.playbook = "site.yml"
+    ansible.host_key_checking = false
+    config.ssh.forward_agent = true
   end
 
 end
