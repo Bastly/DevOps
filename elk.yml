@@ -1,0 +1,20 @@
+---
+# Ansible playbook for an ELK (Elasticsearch, Logstash, Kibana) logging server.
+#
+# original @author Jeff Geerling (2014).
+- hosts: elk
+  sudo: true
+
+  vars_files:
+    - vars/main.yml
+
+
+  roles:
+    - { role : bastly.openssl }
+#    - geerlingguy.java
+#    - geerlingguy.nginx
+#    - geerlingguy.elasticsearch
+#    - geerlingguy.elasticsearch-curator
+#    - geerlingguy.kibana
+#    - geerlingguy.logstash
+#    - geerlingguy.logstash-forwarder
