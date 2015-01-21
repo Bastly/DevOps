@@ -11,7 +11,7 @@
 
 
   tasks:
-    - debug: msg="ip of elk is {{ logstash_forwarder_logstash_server_id }}"
+    - debug: msg="ip of elk is {{ logstash_forwarder_logstash_server_ip }}"
     
   roles:
     - { role : bastly.openssl_gather, sudo: yes }
@@ -20,4 +20,4 @@
     - { role : bastly.zeromq, sudo: yes }
     - { role : bastly.nodezeromq, sudo: yes }
     - { role : bastly.pythondev, sudo: yes }
-    - { role : bastly.git-publisher}
+#    - { role : bastly.git-publisher}

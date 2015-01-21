@@ -24,8 +24,17 @@
 - name: go build
   command: env PATH=$PATH:/usr/local/go/bin go build chdir=/tmp/logstash-forwarder 
 
+- name: check if fpm gem is installed 
+  shell: gem list fpm -i 
+  register: fpm_is_installed
+  ignore_errors: True
+
+- name: debug
+  debug: msg="fpm is {{ fpm_is_installed }}"
+
 - name: gem install fpm 
   command: gem install fpm 
+  when: fpm_is_installed.stdout_lines[0] != "true"
 
 - name: make deb
   command: env PATH=$PATH:/usr/local/go/bin make deb chdir=/tmp/logstash-forwarder creates=/tmp/logstash-forwarder/logstash-forwarder_0.3.1_amd64.deb
