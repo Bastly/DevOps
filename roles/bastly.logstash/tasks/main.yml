@@ -1,0 +1,44 @@
+---
+- include: setup-Debian.yml
+  when: ansible_os_family == 'Debian'
+
+- name: Create Logstash configuration files.
+  template:
+    src: "{{ item }}.j2"
+    dest: "/etc/logstash/conf.d/{{ item }}"
+    owner: root
+    group: root
+    mode: 0644
+  with_items:
+    - 01-lumberjack-input.conf
+    - 30-lumberjack-output.conf
+  notify: restart logstash
+
+- name: Create Logstash filters.
+  copy:
+    src: "filters/{{ item }}"
+    dest: "/etc/logstash/conf.d/{{ item }}"
+    owner: root
+    group: root
+    mode: 0644
+  with_items:
+    - 10-syslog.conf
+  notify: restart logstash
+
+- name: Create Logstash configuration file for local syslog.
+  template:
+    src: 02-local-syslog-input.conf.j2
+    dest: /etc/logstash/conf.d/02-local-syslog-input.conf
+    owner: root
+    group: root
+    mode: 0644
+  when: logstash_monitor_local_syslog
+  notify: restart logstash
+
+- name: Warn user if using insecure SSL key pair.
+  debug:
+    msg: >
+      Keys! {{ logstash_ssl_dir }} {{ logstash_ssl_key_file }} {{ logstash_ssl_certificate_file }}
+
+- name: Ensure Logstash is started and enabled on boot.
+  service: name=logstash state=started enabled=yes

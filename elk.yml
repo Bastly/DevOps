@@ -7,14 +7,18 @@
 
   vars_files:
     - vars/main.yml
-
+  
+  vars:
+    logstash_main_server_common_name: "elk"
+    logstash_ssl_dir: /etc/pki/logstash
+    logstash_ssl_certificate_file: lumberjack.crt
+    logstash_ssl_key_file: lumberjack.key
 
   roles:
     - { role : bastly.openssl }
-#    - geerlingguy.java
-#    - geerlingguy.nginx
-#    - geerlingguy.elasticsearch
-#    - geerlingguy.elasticsearch-curator
-#    - geerlingguy.kibana
-#    - geerlingguy.logstash
-#    - geerlingguy.logstash-forwarder
+    - bastly.logstash
+    - geerlingguy.java
+    - geerlingguy.nginx
+    - geerlingguy.elasticsearch
+    - geerlingguy.elasticsearch-curator
+    - geerlingguy.kibana

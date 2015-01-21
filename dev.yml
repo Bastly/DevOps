@@ -5,17 +5,19 @@
     nodejs_version: "0.10.35*"
     nodejs_install_method : "package"
     zeromq_version: "4.0.5"
-    logstash_forwarder_logstash_server: "{{ hostvars['elk1']['ansible_eth1']['ipv4']['address'] }}"
+    logstash_forwarder_logstash_server: "elk"
+    logstash_forwarder_logstash_server_ip: "{{ hostvars['elk1']['ansible_eth1']['ipv4']['address'] }}"
     logstash_forwarder_logstash_server_port: 5000
 
 
   tasks:
-    - debug: msg="ip of elk is {{ logstash_forwarder_logstash_server }}"
+    - debug: msg="ip of elk is {{ logstash_forwarder_logstash_server_id }}"
     
-  roles: 
+  roles:
+    - { role : bastly.openssl_gather, sudo: yes }
+    - { role : bastly.logstash-forwarder, sudo: yes }
     - { role : bastly.nodejs, sudo: yes }
     - { role : bastly.zeromq, sudo: yes }
     - { role : bastly.nodezeromq, sudo: yes }
     - { role : bastly.pythondev, sudo: yes }
-    - { role : bastly.logstash-forwarder, sudo: yes }
     - { role : bastly.git-publisher}

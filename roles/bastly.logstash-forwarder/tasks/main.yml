@@ -32,3 +32,21 @@
 
 - name: dpkg -i logstash-forwarder_0.3.1_amd64.deb
   command: dpkg -i logstash-forwarder_0.3.1_amd64.deb chdir=/tmp/logstash-forwarder creates=/opt/logstash-forwarder 
+
+- name: add hosts for logstash 
+  lineinfile: dest=/etc/hosts line="{{logstash_forwarder_logstash_server_ip}} {{logstash_forwarder_logstash_server}} "
+
+- name: Create logstash-forwarder configuration file.
+  template:
+    src: logstash-forwarder.j2
+    dest: /etc/logstash-forwarder
+    mode: 0644
+  notify: restart logstash-forwarder
+
+- name: Ensure Logstash SSL key pair directory exists.
+  file:
+    path: "{{ logstash_ssl_dir }}"
+    state: directory
+
+- name: Ensure logstash-forwarder is started and enabled on boot.
+  service: name=logstash-forwarder state=started enabled=yes
