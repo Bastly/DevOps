@@ -16,5 +16,5 @@
     - { role : bastly.zeromq, sudo: yes }
     - { role : bastly.nodezeromq, sudo: yes }
     - { role : bastly.pythondev, sudo: yes }
-    - { role : bastly.logstash-forwarder, sudo: yes }
+    # - { role : bastly.logstash-forwarder, sudo: yes }
     - { role : bastly.git-publisher }

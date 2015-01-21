@@ -6,5 +6,5 @@
 - name: install app npm dependencies.
   npm: path=/home/vagrant/client
 
-- name: start node server
-  shell: chdir=/home/vagrant/client nohup npm start & > log.out
+# - name: start node server
+#   shell: chdir=/home/vagrant/client nohup npm start & > log.out
