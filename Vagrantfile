@@ -15,6 +15,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     pub1.vm.network "public_network", type: "dhcp"
   end
 
+  config.vm.define "dev1" do |dev1|
+    dev1.vm.box = "ubuntu/trusty64"
+    dev1.vm.network "public_network", type: "dhcp"
+  end
+
   config.vm.define "sub1" do |sub1|
     sub1.vm.box = "ubuntu/trusty64"
     sub1.vm.network "public_network", type: "dhcp"

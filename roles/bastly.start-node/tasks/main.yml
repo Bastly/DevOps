@@ -1,0 +1,4 @@
+---
+# tasks file for bastly.start-node
+- name: start node server
+  shell: chdir={{ app_installation_dir }} nohup npm start > /var/log/nohup.log &

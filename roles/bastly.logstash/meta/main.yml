@@ -1,7 +1,7 @@
 ---
 galaxy_info:
-  author: Alex Vidal
-  description: nodejs installer from source or package from nodeSource
+  author: Gustavo Giudici based on on geerlingguy.logstash
+  description: 
   company: Bastly http://bastly.com
   # Some suggested licenses:
   # - BSD (default)
@@ -15,11 +15,8 @@ galaxy_info:
   platforms:
   - name: Ubuntu
     versions:
-    - all
+    - trusty
   categories:
   - system
   - development
 
-dependencies:
-  # - role: bastly.common-build
-  #   when: nodejs_install_method is defined and nodejs_install_method == "source"

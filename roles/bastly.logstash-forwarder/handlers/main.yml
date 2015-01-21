@@ -1,2 +1,3 @@
 ---
-# handlers file for roles/bastly.logstash-forwarder
+- name: restart logstash-forwarder
+  service: name=logstash-forwarder state=restarted
