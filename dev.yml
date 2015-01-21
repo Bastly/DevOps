@@ -16,8 +16,8 @@
   roles:
     - { role : bastly.openssl_gather, sudo: yes }
     - { role : bastly.logstash-forwarder, sudo: yes }
-#    - { role : bastly.nodejs, sudo: yes }
-#    - { role : bastly.zeromq, sudo: yes }
-#    - { role : bastly.nodezeromq, sudo: yes }
-#    - { role : bastly.pythondev, sudo: yes }
-#    - { role : bastly.git-publisher}
+    - { role : bastly.nodejs, sudo: yes }
+    - { role : bastly.zeromq, sudo: yes }
+    - { role : bastly.nodezeromq, sudo: yes }
+    - { role : bastly.pythondev, sudo: yes }
+    - { role : bastly.git-publisher}
