@@ -5,8 +5,14 @@
   with_items:
     - python-dev
 
+- name: Check if pip is already installed.
+  stat: path=/usr/local/bin/pip 
+  register: pip_installed
+
 - name: Download pip
   command: wget https://bootstrap.pypa.io/get-pip.py chdir=/tmp 
+  when: pip_installed.stat.exists == false
 
 - name: Insstall pip
   command: python get-pip.py chdir=/tmp 
+  when: pip_installed.stat.exists == false
