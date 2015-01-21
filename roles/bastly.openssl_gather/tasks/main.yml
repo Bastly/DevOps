@@ -1,0 +1,11 @@
+---
+# tasks file for roles/bastly.openssl
+- name: Create directory for keys  
+  command:  mkdir pki chdir=/etc creates=/etc/pki
+
+- name: Create directory for keys  
+  command:  mkdir logstash chdir=/etc/pki creates=/etc/pki/logstash
+
+- name: Copy keys  
+  command:  cp /vagrant/sharedKeys/lumberjack.crt  /etc/pki/logstash  creates=/etc/pki/logstash/lumberjack.crt 
+

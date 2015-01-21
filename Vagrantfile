@@ -7,12 +7,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   
   config.vm.define "elk1" do |elk1|
     elk1.vm.box = "ubuntu/trusty64"
-    elk1.vm.network "private_network", type: "dhcp"
+    elk1.vm.network "public_network", type: "dhcp", bridge: "wlan2"
   end
 
   config.vm.define "dev1" do |dev1|
     dev1.vm.box = "ubuntu/trusty64"
-    dev1.vm.network "private_network", type: "dhcp"
+    dev1.vm.network "public_network", type: "dhcp", bridge: "wlan2"
   end
 
 
