@@ -4,19 +4,13 @@
     nodejs_version: "0.10.35*"
     nodejs_install_method : "package"
     zeromq_version: "4.0.5"
-    logstash_forwarder_logstash_server: "{{ hostvars['elk1']['ansible_eth1']['ipv4']['address'] }}"
-    logstash_forwarder_logstash_server_port: 5000
     repo_to_install: "git@github.com:Bastly/node-world.git"
     app_installation_dir : "/home/vagrant/client"
-
-  tasks:
-    - debug: msg="ip of elk is {{ logstash_forwarder_logstash_server }}"
     
   roles: 
     - { role : bastly.nodejs, sudo: yes }
     - { role : bastly.zeromq, sudo: yes }
     - { role : bastly.nodezeromq, sudo: yes }
     - { role : bastly.pythondev, sudo: yes }
-    - { role : bastly.logstash-forwa rder, sudo: yes }
     - { role : bastly.git-publisher }
     - { role : bastly.start-node, sudo: yes }
