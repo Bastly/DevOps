@@ -1,0 +1,17 @@
+
+elk1 ansible_ssh_host=192.168.70.1
+pub1 ansible_ssh_host=192.168.70.2
+sub1 ansible_ssh_host=192.168.70.3
+
+[elk]
+elk1
+
+[pub]
+pub1
+
+[sub]
+sub1
+
+[log_gather]
+pub1
+sub1
