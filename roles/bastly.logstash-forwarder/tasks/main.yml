@@ -20,6 +20,7 @@
 
 - name: git clone git://github.com/elasticsearch/logstash-forwarder.git
   git: repo=git://github.com/elasticsearch/logstash-forwarder.git dest=/tmp/logstash-forwarder accept_hostkey=True
+  sudo: no
 
 - name: go build
   command: env PATH=$PATH:/usr/local/go/bin go build chdir=/tmp/logstash-forwarder 
