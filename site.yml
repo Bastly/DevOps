@@ -2,4 +2,6 @@
 # file: site.yml
 - include: dev.yml
 - include: elk.yml
+- include: sub.yml
+- include: pub.yml
 

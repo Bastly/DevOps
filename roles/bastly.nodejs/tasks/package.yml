@@ -1,14 +1,31 @@
-# file: nodejs/tasks/package.yml
+---
 
-- name: node.js | Make sure the ansible required dependencies are installed
-  apt:
-    pkg: python-pycurl
-    state: present
+- name: Ensure Ubuntu Distro is Supported
+  get_url: 
+    url='https://deb.nodesource.com/node/dists/{{ ansible_distribution_release }}/Release' 
+    dest=/dev/null
+  register: distrosupported
 
-- name: nodejs | Add the nodejs repository with the node script
-  shell: curl -sL https://deb.nodesource.com/setup | sudo bash -
+- name: Add Nodesource Keys
+  apt_key: 
+    url=https://deb.nodesource.com/gpgkey/nodesource.gpg.key 
+    state=present
 
-- name: node.js | Install the node.js package
-  apt:
-    pkg: nodejs={{nodejs_version}}
-    state: present
+- name: Add Nodesource Apt Sources List Deb
+  apt_repository: 
+    repo='deb https://deb.nodesource.com/node {{ ansible_distribution_release }} main' 
+    state=present
+  when: distrosupported|success
+
+- name: Add Nodesource Apt Sources List Deb Src
+  apt_repository: 
+    repo='deb-src https://deb.nodesource.com/node {{ ansible_distribution_release }} main' 
+    state=present
+  when: distrosupported|success
+
+- name: Install NodeJS
+  apt: name=nodejs={{ nodejs_version }}* update_cache=true
+  when: distrosupported|success
+
+- name: nodejs | debug version name
+  debug: msg="{{ nodejs_version }}*"

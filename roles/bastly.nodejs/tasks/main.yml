@@ -4,20 +4,17 @@
 - name: show status vars
   debug: msg="installing through {{ nodejs_install_method }} with version {{ nodejs_version }}"
 
-- include: package.yml
-  command: node --version
-  ignore_errors: yes
-  register: node_version
-  changed_when: node_version.rc != 0 or node_version.stdout != "v{{ nodejs_version }}"
-  debug: "current version is {{ node_version }} trying to install {{ nodejs_version }}"
-  when: nodejs_install_method == "package"
-
 - name: node.js | Check if the node versions is already installed
   command: node --version
   ignore_errors: yes
   register: node_version
-  changed_when: node_version.rc != 0 or node_version.stdout != "v{{ nodejs_version }}"
-  when: nodejs_install_method == "source"
+
+- name: show current version.
+  debug: msg="current version {{ node_version.stdout }} and true {{ node_version.stdout }} != "v{{ nodejs_version }}""
+  when: node_version.failed is defined and node_version.failed == false
+
+- include: package.yml
+  when: (nodejs_install_method == "package" and node_version.failed is defined) or (nodejs_install_method == "package" and node_version.stdout != "v{{ nodejs_version }}")
 
 - include: source.yml
   when: nodejs_install_method == "source" and node_version.changed
