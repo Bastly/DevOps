@@ -1,5 +1,6 @@
 ---
 # file: site.yml
+- include: ssh_check.yml
 - include: log_gather.yml
 - include: elk.yml
 - include: sub.yml
