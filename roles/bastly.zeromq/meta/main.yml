@@ -21,4 +21,4 @@ galaxy_info:
   - development
 
 dependencies:
-  - role: bastly.common-build
+  # - role: bastly.common-build
