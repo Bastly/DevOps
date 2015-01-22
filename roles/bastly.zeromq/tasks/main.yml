@@ -7,6 +7,11 @@
     - pkg-config    
     - uuid-dev
     - libzmq-dev
+    - automake
+    - autoconf
+    - build-essential
+    - g++
+    - git
 
 - name: Zeromq | Download zeromq version checker
   command: wget https://raw.githubusercontent.com/zeromq/pyzmq/master/zmqversion.py chdir=/tmp creates=/tmp/zmqversion.py
