@@ -2,7 +2,7 @@
 - hosts: log_gather
   vars:
     logstash_forwarder_logstash_server: "elk"
-    logstash_forwarder_logstash_server_ip: "{{ hostvars['elk1']['ansible_eth1']['ipv4']['address'] }}"
+    logstash_forwarder_logstash_server_ip: "{{ hostvars['elk1']['ansible_ssh_host'] }}"
     logstash_forwarder_logstash_server_port: 5000
 
 
