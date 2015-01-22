@@ -30,6 +30,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     ansible.verbose = "vvv"
     ansible.playbook = "site.yml"
     ansible.host_key_checking = false
+    ansible.inventory_path = "ansible_static_inventory"
     config.ssh.forward_agent = true
   end
 
