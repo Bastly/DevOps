@@ -5,6 +5,7 @@
     nodejs_install_method : "package"
     zeromq_version: "4.0.5"
     repo_to_install: "git@github.com:Bastly/node-hello.git"
+    app_installation_dir : "/home/vagrant/client"
 
   roles: 
     - { role : bastly.nodejs, sudo: yes }

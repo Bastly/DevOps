@@ -7,7 +7,7 @@
 
   vars_files:
     - vars/main.yml
-  
+
   vars:
     logstash_main_server_common_name: "elk"
     logstash_ssl_dir: /etc/pki/logstash

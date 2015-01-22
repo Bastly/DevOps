@@ -7,17 +7,17 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.define "elk1" do |elk1|
     elk1.vm.box = "ubuntu/trusty64"
-    elk1.vm.network "public_network", type: "dhcp"
+    elk1.vm.network "public_network", type: "dhcp", bridge: "eth0"
   end
   
   config.vm.define "pub1" do |pub1|
     pub1.vm.box = "ubuntu/trusty64"
-    pub1.vm.network "public_network", type: "dhcp"
+    pub1.vm.network "public_network", type: "dhcp", bridge: "eth0"
   end
 
   config.vm.define "sub1" do |sub1|
     sub1.vm.box = "ubuntu/trusty64"
-    sub1.vm.network "public_network", type: "dhcp"
+    sub1.vm.network "public_network", type: "dhcp", bridge: "eth0"
   end
 
   config.vm.provision :ansible do |ansible|
