@@ -19,8 +19,7 @@
   lineinfile: dest=/root/.profile line="export PATH=$PATH:/usr/local/go/bin"
 
 - name: git clone git://github.com/elasticsearch/logstash-forwarder.git
-  git: repo=git://github.com/elasticsearch/logstash-forwarder.git dest=/tmp/logstash-forwarder accept_hostkey=True
-  sudo: no
+  git: repo=https://github.com/elasticsearch/logstash-forwarder.git dest=/tmp/logstash-forwarder accept_hostkey=True
 
 - name: go build
   command: env PATH=$PATH:/usr/local/go/bin go build chdir=/tmp/logstash-forwarder 
