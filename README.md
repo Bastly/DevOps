@@ -1,3 +1,4 @@
+sudo ansible-galaxy install -r requirements.txt
 sudo apt-get install redis-server
 sudo service redis-server stop
 sudo service redis-server start
