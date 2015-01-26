@@ -1,2 +1,0 @@
-- name: install nodejs zeromq lib
-  npm: name=zmq global=yes  

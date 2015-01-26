@@ -5,3 +5,13 @@ geerlingguy.elasticsearch-curator
 geerlingguy.kibana
 geerlingguy.logstash
 geerlingguy.logstash-forwarder
+bastly.git-publisher
+bastly.logstash
+bastly.logstash-forwarder
+bastly.nodejs
+bastly.nodezeromq
+bastly.openssl
+bastly.openssl_gather
+bastly.pythondev
+bastly.start-node
+bastly.zeromq
