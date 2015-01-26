@@ -13,5 +13,5 @@ bastly.nodezeromq
 bastly.openssl
 bastly.openssl-gather
 bastly.pythondev
-bastly.start-node
+bastly.start-nodeapp
 bastly.zeromq
