@@ -11,7 +11,7 @@ bastly.logstash-forwarder
 bastly.nodejs
 bastly.nodezeromq
 bastly.openssl
-bastly.openssl_gather
+bastly.openssl-gather
 bastly.pythondev
 bastly.start-node
 bastly.zeromq
