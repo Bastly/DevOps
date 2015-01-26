@@ -14,4 +14,4 @@
     - { role : bastly.nodezeromq, sudo: yes }
     - { role : bastly.pythondev, sudo: yes }
     - { role : bastly.git-publisher }
-    - { role : bastly.start-node, sudo: yes }
+    - { role : bastly.start-nodeapp, sudo: yes }
