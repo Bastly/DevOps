@@ -1,17 +1,17 @@
 
-elk1 ansible_ssh_host=192.168.1.111 ansible_ssh_user=vagrant ansible_ssh_private_key_file=.vagrant/machines/elk1/virtualbox/private_key
-pub1 ansible_ssh_host=192.168.1.112 ansible_ssh_user=vagrant ansible_ssh_private_key_file=.vagrant/machines/pub1/virtualbox/private_key
-sub1 ansible_ssh_host=192.168.1.113 ansible_ssh_user=vagrant ansible_ssh_private_key_file=.vagrant/machines/sub1/virtualbox/private_key
+elk1 ansible_ssh_host=192.168.1.111 ansible_ssh_user=vagrant ansible_ssh_private_key_file=/home/xa/Works/mgl/bastly/DevOps/.vagrant/machines/elk1/virtualbox/private_key
+bastly1 ansible_ssh_host=192.168.1.112 ansible_ssh_user=vagrant ansible_ssh_private_key_file=/home/xa/Works/mgl/bastly/DevOps/.vagrant/machines/pub1/virtualbox/private_key
+chaski1 ansible_ssh_host=192.168.1.113 ansible_ssh_user=vagrant ansible_ssh_private_key_file=/home/xa/Works/mgl/bastly/DevOps/.vagrant/machines/sub1/virtualbox/private_key
 
 [elk]
 elk1
 
 [pub]
-pub1
+bastly1
 
 [sub]
-sub1
+chaski1
 
 [log_gather]
-pub1
-sub1
+bastly1
+chaski1

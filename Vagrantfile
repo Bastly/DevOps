@@ -7,17 +7,20 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.define "elk1" do |elk1|
     elk1.vm.box = "ubuntu/trusty64"
-    elk1.vm.network "public_network", ip: "192.168.1.111", bridge:"eth0"
+    elk1.vm.network "public_network", ip: "192.168.1.111", bridge:"wlan2"
   end
   
-  config.vm.define "pub1" do |pub1|
+  config.vm.define "bastly1" do |bastly1|
     pub1.vm.box = "ubuntu/trusty64"
-    pub1.vm.network "public_network", ip: "192.168.1.112", bridge:"eth0"
+    pub1.vm.network "public_network", ip: "192.168.1.112", bridge:"wlan2"
+    pub1.vm.provider "virtualbox" do |v|
+        v.memory = 1024 
+    end
   end
 
-  config.vm.define "sub1" do |sub1|
+  config.vm.define "chaski1" do |chaski1|
     sub1.vm.box = "ubuntu/trusty64"
-    sub1.vm.network "public_network", ip: "192.168.1.113", bridge:"eth0"
+    sub1.vm.network "public_network", ip: "192.168.1.113", bridge:"wlan2"
   end
 
   config.vm.provision :ansible do |ansible|
