@@ -11,16 +11,16 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
   
   config.vm.define "bastly1" do |bastly1|
-    pub1.vm.box = "ubuntu/trusty64"
-    pub1.vm.network "public_network", ip: "192.168.1.112", bridge:"wlan2"
-    pub1.vm.provider "virtualbox" do |v|
+    bastly1.vm.box = "ubuntu/trusty64"
+    bastly1.vm.network "public_network", ip: "192.168.1.112", bridge:"wlan2"
+    bastly1.vm.provider "virtualbox" do |v|
         v.memory = 1024 
     end
   end
 
   config.vm.define "chaski1" do |chaski1|
-    sub1.vm.box = "ubuntu/trusty64"
-    sub1.vm.network "public_network", ip: "192.168.1.113", bridge:"wlan2"
+    chaski1.vm.box = "ubuntu/trusty64"
+    chaski1.vm.network "public_network", ip: "192.168.1.113", bridge:"wlan2"
   end
 
   config.vm.provision :ansible do |ansible|
