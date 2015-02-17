@@ -1,12 +1,12 @@
 ---
-- hosts: pub
+- hosts: chaski
   vars:
     nodejs_version: "0.10.35*"
     nodejs_install_method : "package"
     zeromq_version: "4.0.5"
-    repo_to_install: "git@github.com:Bastly/node-hello.git"
+    repo_to_install: "git@github.com:Bastly/node-world.git"
     app_installation_dir : "/home/vagrant/client"
-    connect_to: "{{ hostvars['sub1']['ansible_ssh_host'] }}"
+    connect_to : "{{ hostvars['pub1']['ansible_ssh_host'] }}"
 
   roles: 
     - { role : bastly.nodejs, sudo: yes }

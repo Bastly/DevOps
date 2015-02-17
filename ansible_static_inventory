@@ -6,10 +6,10 @@ chaski1 ansible_ssh_host=192.168.1.113 ansible_ssh_user=vagrant ansible_ssh_priv
 [elk]
 elk1
 
-[pub]
+[bastly]
 bastly1
 
-[sub]
+[chaski]
 chaski1
 
 [log_gather]
