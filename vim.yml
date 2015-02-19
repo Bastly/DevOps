@@ -22,6 +22,9 @@
 
     - name: install patoghen
       command: curl -LSso /home/vagrant/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+    
+    - name: add softtabs 
+      lineinfile: dest=/home/vagrant/.vimrc  line="set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab" state=present create=yes
 
     - name: add pathogen to vimrc
       lineinfile: dest=/home/vagrant/.vimrc  line="execute pathogen#infect()" state=present create=yes
