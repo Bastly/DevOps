@@ -30,7 +30,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 #        "sub" => ["sub1"],
 #        "log_gather" => ["pub1", "sub1"]
 #    }
-    ansible.verbose = "vvv"
+    ansible.verbose = "vvvv"
     ansible.playbook = "site.yml"
     ansible.host_key_checking = false
     ansible.inventory_path = "ansible_static_inventory"

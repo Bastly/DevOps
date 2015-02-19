@@ -1,5 +1,5 @@
 ---
-- hosts: bastly
+- hosts: atahualpa
   vars:
     nodejs_version: "0.10."
     nodejs_install_method : "package"
