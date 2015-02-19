@@ -31,3 +31,6 @@
     
     - name: install ctrlp
       command: git clone https://github.com/kien/ctrlp.vim.git chdir=/home/vagrant/.vim/bundle creates=/home/vagrant/.vim/bundle/ctrlp.vim
+    
+    - name: set vim as default editor 
+      lineinfile: dest=/home/vagrant/.profile  line="export EDITOR=vim;" state=present create=yes
