@@ -12,7 +12,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.synced_folder "sharedFolder/elk/", "/vagrant"
   end
   
-  config.vm.define "bastly1" do |bastly1|
+  config.vm.define "bastly1" do |atahualpa1|
     bastly1.vm.box = "ubuntu/trusty64"
     bastly1.vm.network "public_network", ip: "192.168.1.112", bridge:"eth0"
     config.vm.synced_folder "sharedKeys", "/vagrant/sharedKeys"
@@ -36,7 +36,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 #        "sub" => ["sub1"],
 #        "log_gather" => ["pub1", "sub1"]
 #    }
-    ansible.verbose = "vvv"
+    ansible.verbose = "vvvv"
     ansible.playbook = "site.yml"
     ansible.host_key_checking = false
     ansible.inventory_path = "ansible_static_inventory"

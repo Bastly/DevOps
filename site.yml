@@ -4,5 +4,6 @@
 - include: log_gather.yml
 - include: elk.yml
 - include: chaski.yml
-- include: bastly.yml
+- include: atahualpa.yml
+- include: vim.yml
 

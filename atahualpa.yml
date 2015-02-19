@@ -1,10 +1,10 @@
 ---
-- hosts: bastly
+- hosts: atahualpa
   vars:
     nodejs_version: "0.10."
     nodejs_install_method : "package"
     zeromq_version: "4.0.5"
-    repo_to_install: "git@github.com:Bastly/node-hello.git"
+    repo_to_install: "git@github.com:Bastly/atahualpa.git"
     app_installation_dir : "/home/vagrant/client"
     connect_to : "{{ hostvars['chaski1']['ansible_ssh_host'] }}"
 

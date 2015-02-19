@@ -1,0 +1,36 @@
+---
+#
+- hosts: vim
+  sudo: true
+  gather_facts: no
+  vars:
+    nodejs_version: "0.10."
+    nodejs_install_method : "package"
+  
+  roles: 
+    - { role : bastly.nodejs, sudo: yes }
+
+  tasks:
+    - name: install jshint 
+      command: npm install -g jshint
+    
+    - name: create patoghen dirs
+      file: path=/home/vagrant/.vim/autoload state=directory
+    
+    - name: create patoghen dirs
+      file: path=/home/vagrant/.vim/bundle state=directory
+
+    - name: install patoghen
+      command: curl -LSso /home/vagrant/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+
+    - name: add pathogen to vimrc
+      lineinfile: dest=/home/vagrant/.vimrc  line="execute pathogen#infect()" state=present create=yes
+
+    - name: install syntastic
+      command: git clone https://github.com/scrooloose/syntastic.git chdir=/home/vagrant/.vim/bundle creates=/home/vagrant/.vim/bundle/syntastic
+    
+    - name: install ctrlp
+      command: git clone https://github.com/kien/ctrlp.vim.git chdir=/home/vagrant/.vim/bundle creates=/home/vagrant/.vim/bundle/ctrlp.vim
+    
+    - name: set vim as default editor 
+      lineinfile: dest=/home/vagrant/.profile  line="export EDITOR=vim;" state=present create=yes
