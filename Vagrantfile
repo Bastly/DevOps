@@ -10,10 +10,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     elk1.vm.network "public_network", ip: "192.168.1.111", bridge:"wlan2"
   end
   
-  config.vm.define "bastly1" do |bastly1|
-    bastly1.vm.box = "ubuntu/trusty64"
-    bastly1.vm.network "public_network", ip: "192.168.1.112", bridge:"wlan2"
-    bastly1.vm.provider "virtualbox" do |v|
+  config.vm.define "atahualpa1" do |atahualpa1|
+    atahualpa1.vm.box = "ubuntu/trusty64"
+    atahualpa1.vm.network "public_network", ip: "192.168.1.112", bridge:"wlan2"
+    atahualpa1.vm.provider "virtualbox" do |v|
         v.memory = 1024 
     end
   end
