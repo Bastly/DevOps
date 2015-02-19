@@ -4,7 +4,7 @@
     nodejs_version: "0.10."
     nodejs_install_method : "package"
     zeromq_version: "4.0.5"
-    repo_to_install: "git@github.com:Bastly/node-world.git"
+    repo_to_install: "git@github.com:Bastly/chaski.git"
     app_installation_dir : "/home/vagrant/client"
     connect_to : "{{ hostvars['atahualpa1']['ansible_ssh_host'] }}"
 
