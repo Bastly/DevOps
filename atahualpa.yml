@@ -5,7 +5,7 @@
     nodejs_install_method : "package"
     zeromq_version: "4.0.5"
     repo_to_install: "git@github.com:Bastly/atahualpa.git"
-    app_installation_dir : "/home/vagrant/client"
+    app_installation_dir : "/vagrant/client"
     connect_to : "{{ hostvars['chaski1']['ansible_ssh_host'] }}"
 
   roles: 
