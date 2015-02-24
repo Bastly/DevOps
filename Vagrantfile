@@ -7,24 +7,24 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.define "elk1" do |elk1|
     elk1.vm.box = "ubuntu/trusty64"
-    elk1.vm.network "public_network", ip: "192.168.1.111", bridge:"wlan1"
+    elk1.vm.network "public_network", ip: "192.168.1.111", bridge:"wlan2"
     config.vm.synced_folder "sharedKeys", "/vagrant/sharedKeys"
     config.vm.synced_folder "sharedFolder/elk/", "/vagrant"
+    elk1.vm.provider "virtualbox" do |v|
+        v.memory = 1024 
+    end
   end
   
   config.vm.define "atahualpa1" do |atahualpa1|
     atahualpa1.vm.box = "ubuntu/trusty64"
-    atahualpa1.vm.network "public_network", ip: "192.168.1.112", bridge:"wlan1"
+    atahualpa1.vm.network "public_network", ip: "192.168.1.112", bridge:"wlan2"
     config.vm.synced_folder "sharedKeys", "/vagrant/sharedKeys"
     config.vm.synced_folder "sharedFolder/atahualpa/", "/vagrant"
-    atahualpa1.vm.provider "virtualbox" do |v|
-        v.memory = 1024 
-    end
   end
 
   config.vm.define "chaski1" do |chaski1|
     chaski1.vm.box = "ubuntu/trusty64"
-    chaski1.vm.network "public_network", ip: "192.168.1.113", bridge:"wlan1"
+    chaski1.vm.network "public_network", ip: "192.168.1.113", bridge:"wlan2"
     config.vm.synced_folder "sharedKeys", "/vagrant/sharedKeys"
     config.vm.synced_folder "sharedFolder/chaski/", "/vagrant"
   end
