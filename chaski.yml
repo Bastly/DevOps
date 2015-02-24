@@ -7,6 +7,11 @@
     repo_to_install: "git@github.com:Bastly/chaski.git"
     app_installation_dir : "/vagrant/chaski"
     connect_to : "{{ hostvars['atahualpa1']['ansible_ssh_host'] }}"
+    logstash_forwarder_files:
+      - paths:
+          - /var/log/chaski.log
+        fields:
+          type: chaski
 
   roles: 
     - { role : bastly.nodejs, sudo: yes }

@@ -7,6 +7,13 @@
     repo_to_install: "git@github.com:Bastly/atahualpa.git"
     app_installation_dir : "/vagrant/atahualpa"
     connect_to : "{{ hostvars['chaski1']['ansible_ssh_host'] }}"
+    logstash_forwarder_files:
+      - paths:
+          - /var/log/atahualpa.log
+        fields:
+          type: atahualpa
+
+
 
   roles: 
     - { role : bastly.nodejs, sudo: yes }
