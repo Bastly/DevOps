@@ -1,0 +1,12 @@
+---
+#
+- hosts: vim
+  sudo: true
+  gather_facts: no
+  vars:
+    nodejs_version: "0.10."
+    nodejs_install_method : "package"
+
+  roles: 
+    - { role : bastly.nodejs, sudo: yes }
+    - { role : bastly.npm-global-deps, sudo: yes }

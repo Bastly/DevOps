@@ -6,4 +6,4 @@
 - include: chaski.yml
 - include: atahualpa.yml
 - include: vim.yml
-
+- include: dev.yml

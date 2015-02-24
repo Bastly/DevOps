@@ -6,23 +6,23 @@
   vars:
     nodejs_version: "0.10."
     nodejs_install_method : "package"
-  
+
   roles: 
     - { role : bastly.nodejs, sudo: yes }
 
   tasks:
     - name: install jshint 
       command: npm install -g jshint
-    
+
     - name: create patoghen dirs
       file: path=/home/vagrant/.vim/autoload state=directory
-    
+
     - name: create patoghen dirs
       file: path=/home/vagrant/.vim/bundle state=directory
 
     - name: install patoghen
       command: curl -LSso /home/vagrant/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
-    
+
     - name: add softtabs 
       lineinfile: dest=/home/vagrant/.vimrc  line="set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab" state=present create=yes
 
@@ -31,13 +31,13 @@
 
     - name: install jshint2.vim
       command: git clone https://github.com/Shutnik/jshint2.vim.git chdir=/home/vagrant/.vim/bundle creates=/home/vagrant/.vim/bundle/jshint2.vim
-    
+
     - name: install ctrlp
       command: git clone https://github.com/kien/ctrlp.vim.git chdir=/home/vagrant/.vim/bundle creates=/home/vagrant/.vim/bundle/ctrlp.vim
-    
+
     - name: set vim as default editor 
       lineinfile: dest=/home/vagrant/.profile  line="export EDITOR=vim;" state=present create=yes
-    
+
     - name: set vim jshint parameters 
       lineinfile: dest=/home/vagrant/.profile  line="{{ item }}" state=present create=yes
       with_items:
@@ -52,4 +52,3 @@
         - "nnoremap <silent><F3> :lprevious<CR>"
         - "inoremap <silent><F3> <C-O>:lprevious<CR>"
         - "vnoremap <silent><F3> :lprevious<CR>"
-
