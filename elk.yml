@@ -17,8 +17,8 @@
   roles:
     - { role : bastly.openssl }
     - bastly.logstash
-    - geerlingguy.java
-    - geerlingguy.nginx
-    - geerlingguy.elasticsearch
-    - geerlingguy.elasticsearch-curator
-    - geerlingguy.kibana
+    - bastly.java
+    - bastly.nginx
+    - bastly.elasticsearch
+    - bastly.elasticsearch-curator
+    - bastly.kibana
