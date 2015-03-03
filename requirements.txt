@@ -1,10 +1,8 @@
-geerlingguy.java
-geerlingguy.nginx
-geerlingguy.elasticsearch
-geerlingguy.elasticsearch-curator
-geerlingguy.kibana
-geerlingguy.logstash
-geerlingguy.logstash-forwarder
+bastly.java
+bastly.elasticsearch
+bastly.elasticsearch-curator
+bastly.kibana
+bastly.logstash
 bastly.git-publisher
 bastly.logstash
 bastly.logstash-forwarder
@@ -16,3 +14,4 @@ bastly.pythondev
 bastly.start-nodeapp
 bastly.zeromq
 bastly.npm-global-deps
+bastly.nginx
