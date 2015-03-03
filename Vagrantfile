@@ -3,7 +3,7 @@
 
 require 'yaml'
 
-settings = YAML.load_file 'vagrant.yml'
+settings = YAML.load_file 'vagrantConfig.yml'
 elk1_ip_address = 
 api_ip_address = settings['atahualpa1']['ip_address']
 api_ip_address = settings['chaski1']['ip_address']
@@ -14,7 +14,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.define "elk1" do |elk1|
     elk1.vm.box = "ubuntu/trusty64"
-    elk1.vm.network "public_network", ip: settings['elk1']['ip_address'], bridge: settings['bridge']
+    elk1.vm.network "public_network", ip: settings['elk1']['ip'], bridge: settings['bridge']
     config.vm.synced_folder "sharedKeys", "/vagrant2/sharedKeys"
     config.vm.synced_folder "sharedFolder/elk/", "/vagrant"
     elk1.vm.provider "virtualbox" do |v|
@@ -24,14 +24,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   
   config.vm.define "atahualpa1" do |atahualpa1|
     atahualpa1.vm.box = "ubuntu/trusty64"
-    atahualpa1.vm.network "public_network", ip: settings['atahualpa1']['ip_address'], bridge: settings['bridge']
+    atahualpa1.vm.network "public_network", ip: settings['atahualpa1']['ip'], bridge: settings['bridge']
     config.vm.synced_folder "sharedKeys", "/vagrant2/sharedKeys"
     config.vm.synced_folder "sharedFolder/atahualpa/", "/vagrant"
   end
 
   config.vm.define "chaski1" do |chaski1|
     chaski1.vm.box = "ubuntu/trusty64"
-    chaski1.vm.network "public_network", ip: settings['chaski1']['ip_address'], bridge: settings['bridge']
+    chaski1.vm.network "public_network", ip: settings['chaski1']['ip'], bridge: settings['bridge']
     config.vm.synced_folder "sharedKeys", "/vagrant2/sharedKeys"
     config.vm.synced_folder "sharedFolder/chaski/", "/vagrant"
   end
