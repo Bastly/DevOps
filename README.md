@@ -8,3 +8,4 @@ sudo pip install redis
 
 TO CREATE A NEW ROLE (RECIPE) FOR ANSIBLE GALAXY
 ansible-galaxy init rolename
+
