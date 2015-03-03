@@ -5,6 +5,7 @@ sudo service redis-server start
 wget https://bootstrap.pypa.io/get-pip.py 
 sudo python get-pip.py
 sudo pip install redis
+sudo pip install Jinja2
 
 TO CREATE A NEW ROLE (RECIPE) FOR ANSIBLE GALAXY
 ansible-galaxy init rolename
