@@ -1,0 +1,14 @@
+
+---
+# it lets do npm publish from a npm repo owned by bastly
+- hosts: dev
+  sudo: false
+  gather_facts: no
+
+  tasks:
+    # tasks file for roles/bastly.git-publisher
+    - name: clone secret keys if not already cloned
+      git: repo=git@bitbucket.org:bastly/secret-keys.git dest=~/secret-keys accept_hostkey=True version=master
+
+    - name: copy .npmrc to ~/
+      command: cp ~/secret-keys/.npmrc ~/ 
