@@ -1,7 +1,7 @@
 ---
 - hosts: chaski
   vars:
-    nodejs_version: "0.10."
+    nodejs_version: "0.12."
     nodejs_install_method : "package"
     zeromq_version: "4.0.5"
     repo_to_install: "git@github.com:Bastly/chaski.git"
