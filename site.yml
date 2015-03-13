@@ -8,3 +8,4 @@
 - include: vim.yml
 - include: dev.yml
 - include: npm-publisher.yml
+- include: webdev.yml
