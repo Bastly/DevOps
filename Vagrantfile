@@ -34,9 +34,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
 
-  config.vm.define "webdev" do |webdev|
-    webdev.vm.box = "ubuntu/trusty64"
-    webdev.vm.network "public_network", ip: settings['webdev']['ip'], bridge: settings['bridge']
+  config.vm.define "webdev1" do |webdev1|
+    webdev1.vm.box = "ubuntu/trusty64"
+    webdev1.vm.network "public_network", ip: settings['webdev1']['ip'], bridge: settings['bridge']
     config.vm.synced_folder "sharedFolder/webdev/", "/vagrant"
   end
 

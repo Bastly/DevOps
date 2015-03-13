@@ -3,7 +3,6 @@
 # it lets do npm publish from a npm repo owned by bastly
 - hosts: dev
   sudo: false
-  gather_facts: no
 
   tasks:
     # tasks file for roles/bastly.git-publisher
