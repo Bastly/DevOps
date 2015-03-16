@@ -2,6 +2,7 @@
 elk1 ansible_ssh_host={{ elk1.ip }} ansible_ssh_user=vagrant ansible_ssh_private_key_file=.vagrant/machines/elk1/virtualbox/private_key
 atahualpa1 ansible_ssh_host={{ atahualpa1.ip }} ansible_ssh_user=vagrant ansible_ssh_private_key_file=.vagrant/machines/atahualpa1/virtualbox/private_key
 chaski1 ansible_ssh_host={{ chaski1.ip }} ansible_ssh_user=vagrant ansible_ssh_private_key_file=.vagrant/machines/chaski1/virtualbox/private_key
+webdev1 ansible_ssh_host={{ webdev1.ip }} ansible_ssh_user=vagrant ansible_ssh_private_key_file=.vagrant/machines/webdev1/virtualbox/private_key
 
 [elk]
 elk1
@@ -15,7 +16,12 @@ chaski1
 [vim]
 atahualpa1
 chaski1
+webdev1
 
 [dev]
 atahualpa1
 chaski1
+webdev1
+
+[webdev]
+webdev1

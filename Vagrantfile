@@ -4,9 +4,6 @@
 require 'yaml'
 
 settings = YAML.load_file 'vagrantConfig.yml'
-elk1_ip_address = 
-api_ip_address = settings['atahualpa1']['ip_address']
-api_ip_address = settings['chaski1']['ip_address']
 
 VAGRANTFILE_API_VERSION = "2"
 
@@ -34,6 +31,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chaski1.vm.network "public_network", ip: settings['chaski1']['ip'], bridge: settings['bridge']
     config.vm.synced_folder "sharedKeys", "/vagrant2/sharedKeys"
     config.vm.synced_folder "sharedFolder/chaski/", "/vagrant"
+  end
+
+
+  config.vm.define "webdev1" do |webdev1|
+    webdev1.vm.box = "ubuntu/trusty64"
+    webdev1.vm.network "public_network", ip: settings['webdev1']['ip'], bridge: settings['bridge']
+    config.vm.synced_folder "sharedFolder/webdev/", "/vagrant"
   end
 
   config.vm.provision :ansible do |ansible|
