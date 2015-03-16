@@ -4,9 +4,9 @@
     nodejs_version: "0.10."
     nodejs_install_method : "package"
     zeromq_version: "4.0.5"
-    repo_to_install: "git@github.com:Bastly/atahualpa.git"
-    app_installation_dir : "/vagrant/atahualpa"
-    connect_to : "{{ hostvars['chaski1']['ansible_ssh_host'] }}"
+    
+    
+    
     logstash_forwarder_files:
       - paths:
           - /var/log/atahualpa.log
@@ -24,7 +24,9 @@
     - { role : bastly.zeromq, sudo: yes }
     - { role : bastly.nodezeromq, sudo: yes }
     - { role : bastly.pythondev, sudo: yes }
-    - { role : bastly.git-publisher }
     - { role : bastly.openssl-gather, sudo: yes }
     - { role : bastly.logstash-forwarder, sudo: yes }
-    - { role : bastly.start-nodeapp, sudo: yes }
+    - { role : bastly.git-publisher, repo_to_install: "git@github.com:Bastly/atahualpa.git", app_installation_dir : "/vagrant/atahualpa"}
+    - { role : bastly.start-nodeapp, sudo: yes,  connect_to : "{{ hostvars['chaski1']['ansible_ssh_host'] }}",  app_installation_dir : "/vagrant/atahualpa"}
+    - { role : bastly.git-publisher, repo_to_install: "git@github.com:Bastly/connector-rest.git", app_installation_dir : "/vagrant/connector-rest"}
+    - { role : bastly.start-nodeapp, sudo: yes,  connect_to : "",  app_installation_dir : "/vagrant/connector-rest"}
