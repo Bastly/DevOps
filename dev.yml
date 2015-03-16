@@ -5,7 +5,19 @@
   vars:
     nodejs_version: "0.10."
     nodejs_install_method : "package"
+ 
 
   roles: 
     - { role : bastly.nodejs, sudo: yes }
     - { role : bastly.npm-global-deps, sudo: yes }
+  
+  tasks:
+    - name: importing vars
+      include_vars: vagrantConfig.yml
+
+    - name: config git email 
+      shell: git config --global user.email {{ git.userEmail }} 
+
+    - name: config git name 
+      shell: git config --global user.name {{ git.name }}
+
