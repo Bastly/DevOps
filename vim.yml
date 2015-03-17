@@ -51,3 +51,4 @@
         - "nnoremap <silent><F3> :lprevious<CR>"
         - "inoremap <silent><F3> <C-O>:lprevious<CR>"
         - "vnoremap <silent><F3> :lprevious<CR>"
+        - 'let g:ctrlp_custom_ignore = ''node_modules\|DS_Store\|git'''
