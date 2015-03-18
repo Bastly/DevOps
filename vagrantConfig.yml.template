@@ -1,5 +1,7 @@
 where: sshkeys/openstack.key|.vagrant/machines/chaski1/virtualbox/private_key
 
+sshuser: ubuntu | vagrant
+
 bridge: wlan2
 
 elk1:
