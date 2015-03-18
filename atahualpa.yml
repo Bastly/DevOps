@@ -27,6 +27,6 @@
     - { role : bastly.openssl-gather, sudo: yes }
     - { role : bastly.logstash-forwarder, sudo: yes }
     - { role : bastly.git-publisher, repo_to_install: "git@github.com:Bastly/atahualpa.git", app_installation_dir : "/vagrant/atahualpa"}
-    - { role : bastly.start-nodeapp, sudo: yes,  connect_to : "{{ hostvars['chaski1']['ansible_ssh_host'] }}",  app_installation_dir : "/vagrant/atahualpa"}
+    - { role : bastly.upstart, sudo: yes, extra_options: "{{ hostvars['chaski1']['ansible_ssh_host'] }}",  script_path : "/vagrant/atahualpa", service: "atahualpa"}
     - { role : bastly.git-publisher, repo_to_install: "git@github.com:Bastly/connector-rest.git", app_installation_dir : "/vagrant/connector-rest"}
-    - { role : bastly.start-nodeapp, sudo: yes,  connect_to : "",  app_installation_dir : "/vagrant/connector-rest"}
+    - { role : bastly.upstart, sudo: yes, extra_options: "",  script_path : "/vagrant/connector-rest", service: "connector-rest"}
