@@ -22,6 +22,11 @@
       shell: git config --global user.name {{ git.name }}
 
 
+    - name: phantomjs dependencies
+      apt: pkg={{ item }}
+      with_items:
+        - libfontconfig1-dev 
+
     - name: update npm
       sudo: true
       shell: npm install -g npm 
@@ -33,3 +38,9 @@
     - name: install browser-sync 
       sudo: true
       shell: npm install -g browser-sync 
+
+    - name: install karma-cli
+      sudo: true
+      shell: npm install -g karma-cli
+
+
