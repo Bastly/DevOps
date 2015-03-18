@@ -6,6 +6,6 @@
   - local_action: command ssh vagrant@{{hostvars[inventory_hostname]['ansible_ssh_host']}}  -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i {{hostvars[inventory_hostname]['ansible_ssh_private_key_file']}} echo foo
     register: result
     until: result.rc  == 0
-    retries: 20
+    retries: 2
     delay: 10
 

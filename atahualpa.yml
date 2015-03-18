@@ -4,9 +4,7 @@
     nodejs_version: "0.10."
     nodejs_install_method : "package"
     zeromq_version: "4.0.5"
-    
-    
-    
+
     logstash_forwarder_files:
       - paths:
           - /var/log/atahualpa.log
@@ -16,8 +14,6 @@
     logstash_forwarder_logstash_server: "elk"
     logstash_forwarder_logstash_server_ip: "{{ hostvars['elk1']['ansible_ssh_host'] }}"
     logstash_forwarder_logstash_server_port: 5000
-
-
 
   roles: 
     - { role : bastly.nodejs, sudo: yes }

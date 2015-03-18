@@ -1,4 +1,7 @@
+where: sshkeys/openstack.key|.vagrant/machines/chaski1/virtualbox/private_key
+
 bridge: wlan2
+
 elk1:
   ip: 192.168.0.111
 
