@@ -4,9 +4,6 @@
     nodejs_version: "0.10."
     nodejs_install_method : "package"
     zeromq_version: "4.0.5"
-    repo_to_install: "git@github.com:Bastly/chaski.git"
-    app_installation_dir : "/vagrant/chaski"
-    connect_to : "{{ hostvars['atahualpa1']['ansible_ssh_host'] }}"
     logstash_forwarder_logstash_server: "elk"
     logstash_forwarder_logstash_server_ip: "{{ hostvars['elk1']['ansible_ssh_host'] }}"
     logstash_forwarder_logstash_server_port: 5000
@@ -21,7 +18,7 @@
     - { role : bastly.zeromq, sudo: yes }
     - { role : bastly.nodezeromq, sudo: yes }
     - { role : bastly.pythondev, sudo: yes }
-    - { role : bastly.git-publisher }
     - { role : bastly.openssl-gather, sudo: yes }
     - { role : bastly.logstash-forwarder, sudo: yes }
-    - { role : bastly.start-nodeapp, sudo: yes }
+    - { role : bastly.git-publisher, repo_to_install: "git@github.com:Bastly/chaski.git", app_installation_dir : "/vagrant/chaski"}
+    - { role : bastly.upstart, sudo: yes, extra_options: "{{ hostvars['atahualpa1']['ansible_ssh_host'] }}",  script_path : "/vagrant/chaski", service: "chaski"}
