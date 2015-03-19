@@ -22,3 +22,5 @@
     - { role : bastly.logstash-forwarder, sudo: yes }
     - { role : bastly.git-publisher, repo_to_install: "git@github.com:Bastly/chaski.git", app_installation_dir : "/vagrant/chaski"}
     - { role : bastly.upstart, sudo: yes, extra_options: "{{ hostvars['atahualpa1']['ansible_ssh_host'] }}",  script_path : "/vagrant/chaski", service: "chaski"}
+    - { role : bastly.git-publisher, repo_to_install: "git@github.com:Bastly/chaski-socketio.git", app_installation_dir : "/vagrant/chaski-socketio"}
+    - { role : bastly.upstart, sudo: yes, extra_options: "{{ hostvars['atahualpa1']['ansible_ssh_host'] }}",  script_path : "/vagrant/chaski-socketio", service: "chaskiSocketio"}
