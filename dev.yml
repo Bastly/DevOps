@@ -7,9 +7,9 @@
     nodejs_install_method : "package"
  
 
-#  roles: 
-#    - { role : bastly.nodejs, sudo: yes }
-#    - { role : bastly.npm-global-deps, sudo: yes }
+  roles: 
+    - { role : bastly.nodejs, sudo: yes }
+    - { role : bastly.npm-global-deps, sudo: yes }
   
   tasks:
     - name: importing vars
