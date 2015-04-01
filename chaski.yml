@@ -21,4 +21,5 @@
     - { role : bastly.openssl-gather, sudo: yes }
     - { role : bastly.logstash-forwarder, sudo: yes }
     - { role : bastly.git-publisher, repo_to_install: "git@github.com:Bastly/chaski.git", app_installation_dir : "/vagrant/chaski"}
-    - { role : bastly.upstart, sudo: yes, extra_options: "{{ hostvars['atahualpa1']['ansible_ssh_host'] }}",  script_path : "/vagrant/chaski", service: "chaski"}
+    - { role : bastly.upstart, sudo: yes, extra_options: "{{ hostvars['atahualpa1']['ansible_ssh_host'] }} ZEROMQ ZEROMQ",  script_path : "/vagrant/chaski", service: "chaski"}
+    - { role : bastly.upstart, sudo: yes, extra_options: "{{ hostvars['atahualpa1']['ansible_ssh_host'] }} SOCKETIO SOCKETIO",  script_path : "/vagrant/chaski", service: "chaskiSocketio"}
