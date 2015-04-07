@@ -1,0 +1,23 @@
+---
+
+- hosts: consulClient
+  pre_tasks:
+    - name: update apt
+      sudo: yes
+      apt: update_cache=yes
+  roles:
+    - { role : savagegus.consul, sudo: yes }
+  vars:
+    consul_version: 0.5.0
+    consul_is_ui: false
+    consul_is_server: false
+    consul_bootstrap: false
+    consul_datacenter: "BastlyInfra"
+    consul_node_name: "{{inventory_hostname}}"
+    consul_servers: ["{{ hostvars['consul1']['ansible_ssh_host'] }}"]
+    consul_bind_address: "{{ hostvars[inventory_hostname]['ansible_ssh_host'] }}"
+    consul_join_at_start: true
+    # configure service
+    consul_log_level: "INFO"
+    consul_rejoin_after_leave: "true"
+    consul_leave_on_terminate: "false"
