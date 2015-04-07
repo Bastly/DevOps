@@ -40,6 +40,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.synced_folder "sharedFolder/webdev/", "/vagrant"
   end
 
+
+  config.vm.define "consul1" do |consul1|
+    consul1.vm.box = "ubuntu/trusty64"
+    consul1.vm.network "public_network", ip: settings['consul1']['ip'], bridge: settings['bridge']
+    config.vm.synced_folder "sharedFolder/consul/", "/vagrant"
+  end
+
   config.vm.provision :ansible do |ansible|
 #    ansible.groups = {
 #        "elk" => ["elk1"],

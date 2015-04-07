@@ -16,3 +16,4 @@ bastly.zeromq
 bastly.npm-global-deps
 bastly.nginx
 bastly.upstart
+savagegus.consul

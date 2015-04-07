@@ -1,0 +1,33 @@
+---
+
+- hosts: consulServer
+  pre_tasks:
+    - name: update apt
+      sudo: yes
+      apt: update_cache=yes
+  roles:
+    - { role : savagegus.consul, sudo: yes }
+  vars:
+    consul_version: 0.5.0
+    consul_is_ui: true
+    consul_is_server: true
+    consul_datacenter: "BastlyInfra"
+    consul_bootstrap: true
+    consul_node_name: "consul_node_name"
+    consul_bind_address: "{{ ansible_default_ipv4['address'] }}"
+    consul_encrypt: "X4SYOinf2pTAcAHRhpj7dA=="
+    nginx_remove_default: yes
+    htpasswd:
+      - name: admin
+        users:
+          - { name: admin, password: admin }
+    nginx_sites:
+      - id: consul
+        add_webroot: no
+        name: consul.local
+        rules:
+          - gzip
+          - security
+        auth:
+          name: Consul
+          file: admin

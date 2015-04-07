@@ -11,6 +11,9 @@ chaski1:
 webdev1:
   ip: 192.168.0.114
 
+consul1:
+  ip: 192.168.0.115
+
 git:
   userEmail: gustavogiudici@gmail.com
   name: gustavogiudici
