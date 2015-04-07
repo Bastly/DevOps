@@ -1,6 +1,6 @@
 #!/bin/bash
-cd Works/mgl/bastly/infra/DevOps/
-vagrant up chaski1 webdev1 atahualpa1
+cd ~/Works/mgl/bastly/infra/DevOps/
+vagrant up chaski1 webdev1 atahualpa1 consul1
 gnome-terminal -x sh -c "vagrant ssh chaski1" -t chaski1
 gnome-terminal -x sh -c "vagrant ssh chaski1" -t chaski1
 gnome-terminal -x sh -c "vagrant ssh chaski1" -t chaski1
