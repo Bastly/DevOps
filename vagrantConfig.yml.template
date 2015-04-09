@@ -2,10 +2,6 @@ where: sshkeys/openstack.key|.vagrant/machines/chaski1/virtualbox/private_key
 
 provider: openstack | virtualbox
 
-ssh_user_centos: centos | vagrant
-
-ssh_user_ubuntu: ubuntu | vagrant
-
 bridge: wlan2
 
 elk1:
