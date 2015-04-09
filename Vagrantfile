@@ -9,19 +9,17 @@ VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
-  provider = (ENV['VAGRANT_DEFAULT_PROVIDER'] || :virtualbox).to_sym
-  puts "Detected #{provider}"
-
-  config.ssh.username       = ''
-  config.ssh.forward_agent  = true
-  config.ssh.private_key_path = './sshkeys/openstack.key'
+  if settings['provider'] == 'openstack'
+    config.ssh.username       = ''
+    config.ssh.forward_agent  = true
+    config.ssh.private_key_path = './sshkeys/openstack.key'
+  end
 
   config.vm.define "elk1" do |elk1|
     elk1.vm.synced_folder "sharedKeys", "/vagrant2/sharedKeys"
     elk1.vm.synced_folder "sharedFolder/elk/", "/vagrant"
-    elk1.ssh.username = 'ubuntu'
     if settings['provider'] == 'openstack'
-      puts "Using openstack provider"
+      elk1.ssh.username = 'ubuntu'
       elk1.vm.box = 'boxes/openstack'
       elk1.vm.provider :openstack do |os|
         os.openstack_auth_url = 'http://192.168.1.201:5000/v2.0/tokens'
@@ -35,7 +33,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         os.floating_ip        = settings['elk1']['ip']
       end
     else
-      puts "Using vittualBox provider"
+      elk1.ssh.username = 'ubuntu'
       elk1.vm.box = "ubuntu/trusty64"
       elk1.vm.network "public_network", ip: settings['elk1']['ip'], bridge: settings['bridge']
       elk1.vm.provider "virtualbox" do |v|
