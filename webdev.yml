@@ -11,7 +11,7 @@
   tasks:
     - name: importing vars
       include_vars: vagrantConfig.yml
-    
+
     - name: phantomjs dependencies
       apt: pkg={{ item }}
       sudo: true
@@ -20,7 +20,7 @@
         - libfontconfig1-dev 
 
     - name: config git email 
-      shell: git config --global user.email {{ git.userEmail }} 
+      shell: git config --global user.email {{ git.userEmail }}
 
     - name: config git name 
       shell: git config --global user.name {{ git.name }}

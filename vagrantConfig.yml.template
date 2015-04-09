@@ -1,6 +1,10 @@
 where: sshkeys/openstack.key|.vagrant/machines/chaski1/virtualbox/private_key
 
-sshuser: ubuntu | vagrant
+provider: openstack | virtualbox
+
+ssh_user_centos: centos | vagrant
+
+ssh_user_ubuntu: ubuntu | vagrant
 
 bridge: wlan2
 
@@ -16,6 +20,9 @@ chaski1:
 webdev1:
   ip: 192.168.0.114
 
+orion1:
+  ip: 192.168.0.115
+  
 git:
   userEmail: gustavogiudici@gmail.com
   name: gustavogiudici
