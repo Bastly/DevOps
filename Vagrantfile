@@ -33,6 +33,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.synced_folder "sharedFolder/chaski/", "/vagrant"
   end
 
+  config.vm.define "chaski2" do |chaski2|
+    chaski2.vm.box = "ubuntu/trusty64"
+    chaski2.vm.network "public_network", ip: settings['chaski2']['ip'], bridge: settings['bridge']
+    config.vm.synced_folder "sharedKeys", "/vagrant2/sharedKeys"
+    config.vm.synced_folder "sharedFolder/chaski/", "/vagrant"
+  end
 
   config.vm.define "webdev1" do |webdev1|
     webdev1.vm.box = "ubuntu/trusty64"

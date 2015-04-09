@@ -8,6 +8,9 @@ atahualpa1:
 chaski1:
   ip: 192.168.0.113
 
+chaski2:
+  ip: 192.168.0.116
+
 webdev1:
   ip: 192.168.0.114
 
