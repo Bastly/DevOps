@@ -7,6 +7,11 @@
     logstash_forwarder_logstash_server: "elk"
     logstash_forwarder_logstash_server_ip: "{{ hostvars['elk1']['ansible_ssh_host'] }}"
     logstash_forwarder_logstash_server_port: 5000
+    #the types are the same ones than in bastly_constants
+    chaski_zeromq_type: "ZEROMQ"
+    chaski_socketio_type: "SOCKETIO"
+    chaski_zeromq_id: "{{chaski_zeromq_type}}{{inventory_hostname}}"
+    chaski_socketio_id: "{{chaski_socketio_type}}{{inventory_hostname}}"
     logstash_forwarder_files:
       - paths:
           - /var/log/chaski.log
@@ -14,15 +19,15 @@
           type: chaski
 
   roles: 
-#    - { role : bastly.nodejs, sudo: yes }
-#    - { role : bastly.zeromq, sudo: yes }
-#    - { role : bastly.nodezeromq, sudo: yes }
-#    - { role : bastly.pythondev, sudo: yes }
-#    - { role : bastly.openssl-gather, sudo: yes }
-#    - { role : bastly.logstash-forwarder, sudo: yes }
-#    - { role : bastly.git-publisher, repo_to_install: "git@github.com:Bastly/chaski.git", app_installation_dir : "/vagrant/chaski"}
-    - { role : bastly.upstart, sudo: yes, extra_options: "{{ hostvars['atahualpa1']['ansible_ssh_host'] }} ZEROMQ ZEROMQ",  script_path : "/vagrant/chaski", service: "chaski"}
-    - { role : bastly.upstart, sudo: yes, extra_options: "{{ hostvars['atahualpa1']['ansible_ssh_host'] }} SOCKETIO SOCKETIO",  script_path : "/vagrant/chaski", service: "chaskiSocketio"}
-    - { role : bastly.consul-service, sudo: yes, service_name: "chaskiZeromq", tag: "chaski", ip_address: "{{ hostvars[inventory_hostname]['ansible_ssh_host'] }}", script_check_path: "/vagrant/chaski/consul_checks/check_zeromq_chaski.js"}
-    - { role : bastly.consul-service, sudo: yes, service_name: "chaskiSocketio", tag: "chaski", ip_address: "{{ hostvars[inventory_hostname]['ansible_ssh_host'] }}", script_check_path: "/vagrant/chaski/consul_checks/check_socketio_chaski.js"}
+    - { role : bastly.nodejs, sudo: yes }
+    - { role : bastly.zeromq, sudo: yes }
+    - { role : bastly.nodezeromq, sudo: yes }
+    - { role : bastly.pythondev, sudo: yes }
+    - { role : bastly.openssl-gather, sudo: yes }
+    - { role : bastly.logstash-forwarder, sudo: yes }
+    - { role : bastly.git-publisher, repo_to_install: "git@github.com:Bastly/chaski.git", app_installation_dir : "/vagrant/chaski"}
+    - { role : bastly.upstart, sudo: yes, extra_options: "{{ hostvars['atahualpa1']['ansible_ssh_host'] }} {{chaski_zeromq_type}} {{chaski_zeromq_id}}",  script_path : "/vagrant/chaski", service: "chaski"}
+    - { role : bastly.upstart, sudo: yes, extra_options: "{{ hostvars['atahualpa1']['ansible_ssh_host'] }} {{chaski_socketio_type}} {{chaski_socketio_id}}",  script_path : "/vagrant/chaski", service: "chaskiSocketio"}
+    - { role : bastly.consul-service, sudo: yes, service_name: "{{chaski_zeromq_type}}", id: "{{chaski_zeromq_id}}", tag: "chaski", ip_address: "{{ hostvars[inventory_hostname]['ansible_ssh_host'] }}", script_check_path: "/vagrant/chaski/consul_checks/check_zeromq_chaski.js"}
+    - { role : bastly.consul-service, sudo: yes, service_name: "{{chaski_socketio_type}}", id: "{{chaski_socketio_id}}", tag: "chaski", ip_address: "{{ hostvars[inventory_hostname]['ansible_ssh_host'] }}", script_check_path: "/vagrant/chaski/consul_checks/check_socketio_chaski.js"}
 
