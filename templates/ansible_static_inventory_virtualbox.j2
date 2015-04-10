@@ -1,10 +1,10 @@
-
 elk1 ansible_ssh_host={{ elk1.ip }} ansible_ssh_user=vagrant ansible_ssh_private_key_file=.vagrant/machines/elk1/virtualbox/private_key
 atahualpa1 ansible_ssh_host={{ atahualpa1.ip }} ansible_ssh_user=vagrant ansible_ssh_private_key_file=.vagrant/machines/atahualpa1/virtualbox/private_key
 chaski1 ansible_ssh_host={{ chaski1.ip }} ansible_ssh_user=vagrant ansible_ssh_private_key_file=.vagrant/machines/chaski1/virtualbox/private_key
 chaski2 ansible_ssh_host={{ chaski2.ip }} ansible_ssh_user=vagrant ansible_ssh_private_key_file=.vagrant/machines/chaski2/virtualbox/private_key
 webdev1 ansible_ssh_host={{ webdev1.ip }} ansible_ssh_user=vagrant ansible_ssh_private_key_file=.vagrant/machines/webdev1/virtualbox/private_key
 consul1 ansible_ssh_host={{ consul1.ip }} ansible_ssh_user=vagrant ansible_ssh_private_key_file=.vagrant/machines/consul1/virtualbox/private_key
+orion1 ansible_ssh_host={{ orion1.ip }} ansible_ssh_user=vagrant ansible_ssh_private_key_file=.vagrant/machines/orion1/virtualbox/private_key
 
 [consulServer]
 consul1
@@ -38,3 +38,6 @@ webdev1
 
 [webdev]
 webdev1
+
+[orion]
+orion1

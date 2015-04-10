@@ -1,22 +1,28 @@
-bridge: wlan2
+bridge: eth0
+
+provider: virtualbox
+
 elk1:
-  ip: 192.168.0.111
+  ip: 192.168.1.227
 
 atahualpa1:
-  ip: 192.168.0.112
+  ip: 192.168.1.228
 
 chaski1:
-  ip: 192.168.0.113
+  ip: 192.168.1.229
 
 chaski2:
   ip: 192.168.0.116
 
 webdev1:
-  ip: 192.168.0.114
+  ip: 192.168.1.230
+
+orion1:
+  ip: 192.168.1.231
 
 consul1:
   ip: 192.168.0.115
 
 git:
-  userEmail: gustavogiudici@gmail.com
-  name: gustavogiudici
+  userEmail: goofyahead@gmail.com
+  name: Alex Vidal

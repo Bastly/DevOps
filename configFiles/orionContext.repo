@@ -1,0 +1,5 @@
+[testbed-fi-ware]
+name=Fiware Repository
+baseurl=http://repositories.testbed.fi-ware.org/repo/rpm/x86_64/
+gpgcheck=0
+enabled=1
