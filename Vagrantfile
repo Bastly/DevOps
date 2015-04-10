@@ -131,6 +131,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         os.keypair_name       = 'openstack'
         os.public_key_path    = './sshkeys/openstack.key.pub'
         os.floating_ip        = settings['chaski2']['ip']
+      end
     else
       chaski2.ssh.username = 'vagrant'
       chaski2.vm.box = "ubuntu/trusty64"
