@@ -18,7 +18,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.define "elk1" do |elk1|
     elk1.vm.synced_folder "sharedKeys", "/vagrant2/sharedKeys"
     elk1.vm.synced_folder "sharedFolder/elk/", "/vagrant"
-    elk1.ssh.username = 'vagrant'
     if settings['provider'] == 'openstack'
       elk1.ssh.username = 'ubuntu'
       elk1.vm.box = 'boxes/openstack'
@@ -34,6 +33,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         os.floating_ip        = settings['elk1']['ip']
       end
     else
+      elk1.ssh.username = 'vagrant'
       elk1.vm.box = "ubuntu/trusty64"
       elk1.vm.network "public_network", ip: settings['elk1']['ip'], bridge: settings['bridge']
       elk1.vm.provider "virtualbox" do |v|
@@ -45,7 +45,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.define "orion1" do |orion1|
     orion1.vm.synced_folder "sharedKeys", "/vagrant2/sharedKeys"
     orion1.vm.synced_folder "sharedFolder/orion/", "/vagrant"
-    orion1.ssh.username = 'vagrant'
     if settings['provider'] == 'openstack'
       orion1.ssh.username = 'centos'
       orion1.vm.box = 'boxes/openstack'
@@ -62,13 +61,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         os.floating_ip        = settings['orion1']['ip']
       end
     else
+      orion1.ssh.username = 'vagrant'
       orion1.vm.box = "nrel/CentOS-6.5-x86_64"
       orion1.vm.network "public_network", ip: settings['orion1']['ip'], bridge: settings['bridge']
     end
   end
   
   config.vm.define "atahualpa1" do |atahualpa1|
-    atahualpa1.ssh.username = 'vagrant'
     atahualpa1.vm.synced_folder "sharedKeys", "/vagrant2/sharedKeys"
     atahualpa1.vm.synced_folder "sharedFolder/atahualpa/", "/vagrant"
     if settings['provider'] == 'openstack'
@@ -86,13 +85,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         os.floating_ip        = settings['atahualpa1']['ip']
       end
     else
+      atahualpa1.ssh.username = 'vagrant'
       atahualpa1.vm.box = "ubuntu/trusty64"
       atahualpa1.vm.network "public_network", ip: settings['atahualpa1']['ip'], bridge: settings['bridge']
     end
   end
 
   config.vm.define "chaski1" do |chaski1|
-    chaski1.ssh.username = 'vagrant'
     config.vm.synced_folder "sharedKeys", "/vagrant2/sharedKeys"
     config.vm.synced_folder "sharedFolder/chaski/", "/vagrant"
     if settings['provider'] == 'openstack'
@@ -110,6 +109,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         os.floating_ip        = settings['chaski1']['ip']
       end
     else
+      chaski1.ssh.username = 'vagrant'
       chaski1.vm.box = "ubuntu/trusty64"
       chaski1.vm.network "public_network", ip: settings['chaski1']['ip'], bridge: settings['bridge']
     end
@@ -117,7 +117,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
 
   config.vm.define "webdev1" do |webdev1|
-    webdev1.ssh.username = 'vagrant'
     config.vm.synced_folder "sharedFolder/webdev/", "/vagrant"
     if settings['provider'] == 'openstack'
       webdev1.ssh.username = 'ubuntu'
@@ -134,6 +133,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         os.floating_ip        = settings['webdev1']['ip']
       end
     else
+      webdev1.ssh.username = 'vagrant'
       webdev1.vm.box = "ubuntu/trusty64"
       webdev1.vm.network "public_network", ip: settings['webdev1']['ip'], bridge: settings['bridge']
     end
