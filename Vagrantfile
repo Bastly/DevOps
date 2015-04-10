@@ -115,6 +115,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
   end
 
+  config.vm.define "chaski2" do |chaski2|
+    chaski2.vm.box = "ubuntu/trusty64"
+    chaski2.vm.network "public_network", ip: settings['chaski2']['ip'], bridge: settings['bridge']
+    config.vm.synced_folder "sharedKeys", "/vagrant2/sharedKeys"
+    config.vm.synced_folder "sharedFolder/chaski/", "/vagrant"
+  end
 
   config.vm.define "webdev1" do |webdev1|
     config.vm.synced_folder "sharedFolder/webdev/", "/vagrant"
@@ -137,6 +143,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       webdev1.vm.box = "ubuntu/trusty64"
       webdev1.vm.network "public_network", ip: settings['webdev1']['ip'], bridge: settings['bridge']
     end
+  end
+
+
+  config.vm.define "consul1" do |consul1|
+    consul1.vm.box = "ubuntu/trusty64"
+    consul1.vm.network "public_network", ip: settings['consul1']['ip'], bridge: settings['bridge']
+    config.vm.synced_folder "sharedFolder/consul/", "/vagrant"
   end
 
   config.vm.provision :ansible do |ansible|

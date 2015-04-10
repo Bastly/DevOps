@@ -11,12 +11,18 @@ atahualpa1:
 chaski1:
   ip: 192.168.1.229
 
+chaski2:
+  ip: 192.168.0.116
+
 webdev1:
   ip: 192.168.1.230
 
 orion1:
   ip: 192.168.1.231
 
+consul1:
+  ip: 192.168.0.115
+
 git:
-  userEmail: goofyahead@gmail.com
-  name: Alex Vidal
+  userEmail: bond@james.bond
+  name: James Bond
