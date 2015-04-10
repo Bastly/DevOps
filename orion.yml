@@ -1,0 +1,38 @@
+---
+- hosts: orion
+  sudo: true
+# Install Orion on Centos
+  tasks:
+  - name: restart iptables
+    service: name=iptables state=restarted
+
+  - name: copy mongodb yum info
+    copy: src=configFiles/mongodbYum.repo dest=/etc/yum.repos.d/mongodb-org-3.0.repo
+
+  - name: copy orion yum info
+    copy: src=configFiles/orionContext.repo dest=/etc/yum.repos.d/orionContext.repo
+
+  - name: install dependencies
+    yum: name={{ item }}
+    with_items:
+      - mongodb-org
+      - boost-filesystem
+      - boost-thread
+      - libmicrohttpd
+      - logrotate
+      - libcurl
+      - contextBroker
+
+  # open iptables port in centos for ORION
+  - name: Allow port 1026 for orion
+    command: iptables -I INPUT 5 -i eth0 -p tcp --dport 1026 -m state --state NEW,ESTABLISHED -j ACCEPT
+
+  - service: name=mongod state=started
+  - service: name=contextBroker state=started
+
+  # Save iptables in case there is a reboot and restart the service
+  - name: save iptables
+    command: service iptables save
+
+  - name: restart iptables
+    command: service iptables restart

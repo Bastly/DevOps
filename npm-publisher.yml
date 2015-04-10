@@ -1,4 +1,3 @@
-
 ---
 # it lets do npm publish from a npm repo owned by bastly
 - hosts: dev
