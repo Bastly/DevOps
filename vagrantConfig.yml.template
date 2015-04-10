@@ -24,5 +24,5 @@ consul1:
   ip: 192.168.0.115
 
 git:
-  userEmail: goofyahead@gmail.com
-  name: Alex Vidal
+  userEmail: bond@james.bond
+  name: James Bond
