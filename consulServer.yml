@@ -6,7 +6,7 @@
       sudo: yes
       apt: update_cache=yes
   roles:
-    - { role : savagegus.consul, sudo: yes }
+    - { role : bastly.consul, sudo: yes }
   vars:
     consul_version: 0.5.0
     consul_is_ui: true

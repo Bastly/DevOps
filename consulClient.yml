@@ -1,14 +1,21 @@
 ---
 
 - hosts: consulClient
+  sudo: true
   pre_tasks:
+    - name: add dns
+      sudo: yes
+      command: echo "nameserver 8.8.8.8" | sudo tee /etc/resolv.conf > /dev/null
+
     - name: update apt
       sudo: yes
       apt: update_cache=yes
+
   roles:
-    - { role : savagegus.consul, sudo: yes }
+    - { role : bastly.consul, sudo: yes }
   vars:
     consul_version: 0.5.0
+    consul_install_dnsmasq: false
     consul_is_ui: false
     consul_is_server: false
     consul_bootstrap: false

@@ -17,4 +17,4 @@ bastly.npm-global-deps
 bastly.nginx
 bastly.upstart
 bastly.consul-service
-savagegus.consul
+bastly.consul

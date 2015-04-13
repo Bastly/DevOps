@@ -23,6 +23,9 @@ orion1:
 consul1:
   ip: 192.168.0.115
 
+connector1:
+  ip: 192.168.0.115
+
 git:
   userEmail: bond@james.bond
   name: James Bond
