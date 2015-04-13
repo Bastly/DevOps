@@ -5,6 +5,7 @@ chaski2 ansible_ssh_host={{ chaski2.ip }} ansible_ssh_user=vagrant ansible_ssh_p
 webdev1 ansible_ssh_host={{ webdev1.ip }} ansible_ssh_user=ubuntu ansible_ssh_private_key_file=sshkeys/openstack.key
 consul1 ansible_ssh_host={{ consul1.ip }} ansible_ssh_user=ubuntu ansible_ssh_private_key_file=sshkeys/openstack.key
 orion1 ansible_ssh_host={{ orion1.ip }} ansible_ssh_user=centos ansible_ssh_private_key_file=sshkeys/openstack.key
+connector1 ansible_ssh_host={{ connector1.ip }} ansible_ssh_user=ubuntu ansible_ssh_private_key_file=sshkeys/openstack.key
 
 [consulServer]
 consul1
@@ -24,19 +25,8 @@ atahualpa1
 chaski1
 chaski2
 
-[vim]
-atahualpa1
-chaski1
-chaski2
-webdev1
-
-[dev]
-atahualpa1
-chaski1
-webdev1
-
-[webdev]
-webdev1
-
 [orion]
 orion1
+
+[connectorRest]
+connector1

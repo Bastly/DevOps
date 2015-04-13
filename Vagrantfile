@@ -185,6 +185,28 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
   end
 
+  config.vm.define "connector1" do |connector1|
+    config.vm.synced_folder "sharedFolder/connector-rest/", "/vagrant"
+    if settings['provider'] == 'openstack'
+      connector1.ssh.username = 'ubuntu'
+      connector1.vm.box = 'boxes/openstack'
+      connector1.vm.provider :openstack do |os|
+        os.openstack_auth_url = 'http://192.168.1.201:5000/v2.0/tokens'
+        os.username           = 'deployer'
+        os.password           = 'deployer'
+        os.tenant_name        = 'deployment'
+        os.flavor             = 'm1.small'
+        os.image              = 'ubuntu'
+        os.keypair_name       = 'openstack'
+        os.public_key_path    = './sshkeys/openstack.key.pub'
+        os.floating_ip        = settings['connector1']['ip']
+      end
+    else
+      connector1.vm.box = "ubuntu/trusty64"
+      connector1.vm.network "public_network", ip: settings['connector1']['ip'], bridge: settings['bridge']
+    end
+  end
+
   config.vm.provision :ansible do |ansible|
     ansible.verbose = "vvvv"
     ansible.playbook = "site.yml"
