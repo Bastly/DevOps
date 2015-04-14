@@ -27,7 +27,7 @@
 
     - name: update npm
       sudo: true
-      shell: npm install -g npm 
+      shell: npm install -g npm@next
 
     - name: install gulp 
       sudo: true
