@@ -11,6 +11,10 @@
       sudo: yes
       apt: update_cache=yes
 
+  tasks:
+    - name: My message
+      debug: msg="My host is {{ ansible_default_ipv4['address'] }}"
+
   roles:
     - { role : bastly.consul, sudo: yes }
   vars:
@@ -21,8 +25,8 @@
     consul_bootstrap: false
     consul_datacenter: "BastlyInfra"
     consul_node_name: "{{inventory_hostname}}"
-    consul_servers: ["{{ hostvars['consul1']['ansible_ssh_host'] }}"]
-    consul_bind_address: "{{ hostvars[inventory_hostname]['ansible_ssh_host'] }}"
+    consul_servers: ["10.11.12.8"]
+    consul_bind_address: "{{ ansible_default_ipv4['address'] }}"
     consul_join_at_start: true
     # configure service
     consul_log_level: "INFO"

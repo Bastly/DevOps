@@ -14,8 +14,8 @@
     consul_datacenter: "BastlyInfra"
     consul_bootstrap: true
     consul_node_name: "{{inventory_hostname}}"
-    consul_bind_address: "{{ hostvars[inventory_hostname]['ansible_ssh_host'] }}"
-    consul_encrypt: "X4SYOinf2pTAcAHRhpj7dA=="
+    consul_bind_address: "10.11.12.8"
+    # consul_encrypt: "X4SYOinf2pTAcAHRhpj7dA=="
     nginx_remove_default: yes
     htpasswd:
       - name: admin
