@@ -14,6 +14,6 @@
   roles: 
     - { role : bastly.logstash-forwarder, sudo: yes }
     - { role : bastly.git-publisher, repo_to_install: "git@github.com:Bastly/atahualpa.git", app_installation_dir : "/vagrant/atahualpa"}
-    - { role : bastly.upstart, sudo: yes, extra_options: "{{ hostvars['consul1']['ansible_ssh_host'] }}",  script_path : "/vagrant/atahualpa", service: "atahualpa"}
+    - { role : bastly.upstart, sudo: yes, extra_options: "{{ hostvars['consul1']['ansible_eth0']['ipv4']['address'] }}",  script_path : "/vagrant/atahualpa", service: "atahualpa"}
     - { role : bastly.git-publisher, repo_to_install: "git@github.com:Bastly/connector-rest.git", app_installation_dir : "/vagrant/connector-rest"}
-    - { role : bastly.upstart, sudo: yes, extra_options: "",  script_path : "/vagrant/connector-rest", service: "connector-rest"}
+    - { role : bastly.upstart, sudo: yes, extra_options: "--atahualpa {{ hostvars['atahualpa1']['ansible_ssh_host'] }} --orion {{ hostvars['orion1']['ansible_ssh_host'] }} --callback {{ hostvars['connector1']['ansible_ssh_host'] }}:1026",  script_path : "/vagrant/connector-rest", service: "connector-rest"}
