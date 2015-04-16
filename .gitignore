@@ -2,3 +2,4 @@
 ansible_static_inventory
 vagrantConfig.yml
 *.swp
+terraform/hosts
