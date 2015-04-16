@@ -23,7 +23,6 @@
     - { role : bastly.zeromq, sudo: yes }
     - { role : bastly.nodezeromq, sudo: yes }
     - { role : bastly.pythondev, sudo: yes }
-    - { role : bastly.openssl-gather, sudo: yes }
     - { role : bastly.logstash-forwarder, sudo: yes }
     - { role : bastly.git-publisher, repo_to_install: "git@github.com:Bastly/chaski.git", app_installation_dir : "/vagrant/chaski"}
     - { role : bastly.upstart, sudo: yes, extra_options: "{{ hostvars['atahualpa1']['ansible_ssh_host'] }} {{chaski_zeromq_type}} {{chaski_zeromq_id}}",  script_path : "/vagrant/chaski", service: "chaski"}
