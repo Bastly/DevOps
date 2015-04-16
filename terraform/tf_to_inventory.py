@@ -17,7 +17,7 @@ ssh_key_extension = ".key"
 with open("terraform.tfstate") as fp:
     state = json.load(fp)
 
-with open("hosts", "w") as inventory:
+with open("ansible_static_inventory", "w") as inventory:
     for role, extra_roles in associated_roles.iteritems():
         for extra_role in extra_roles:
             groups[extra_role] = []
