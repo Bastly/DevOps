@@ -21,7 +21,7 @@
     consul_bootstrap: false
     consul_datacenter: "BastlyInfra"
     consul_node_name: "{{inventory_hostname}}"
-    consul_servers: ["{{ hostvars['consul1']['ansible_eth0']['ipv4']['address'] }}"]
+    consul_servers: ["{{ hostvars['consul1']['ansible_eth1']['ipv4']['address'] }}"]
     consul_bind_address: "{{ ansible_default_ipv4['address'] }}"
     consul_join_at_start: true
     # configure service
