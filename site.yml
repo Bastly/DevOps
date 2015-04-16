@@ -3,12 +3,13 @@
 - include: ssh_check.yml
 - include: consulServer.yml
 - include: consulClient.yml
+- include: node.yml
 - include: atahualpa.yml
-- include: log_gather.yml
+#- include: log_gather.yml
 - include: elk.yml
 - include: chaski.yml
-- include: webdev.yml
-- include: vim.yml
+#- include: webdev.yml
+#- include: vim.yml
 - include: dev.yml
 - include: npm-publisher.yml
 - include: orion.yml
