@@ -1,7 +1,5 @@
 ---
 - hosts: webdev
-  vars:
-    nodejs_install_method : "package"
 
   roles: 
     - { role : bastly.git-publisher, repo_to_install: "git@github.com:Bastly/sdk-js-browser.git", app_installation_dir : "/vagrant/sdk-js"}

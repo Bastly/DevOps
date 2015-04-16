@@ -2,8 +2,6 @@
 #
 - hosts: vim
   sudo: true
-  vars:
-    nodejs_install_method : "package"
 
   tasks:
     - name: install jshint 

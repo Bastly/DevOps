@@ -1,8 +1,6 @@
 ---
 - hosts: atahualpa
   vars:
-    zeromq_version: "4.0.5"
-
     logstash_forwarder_files:
       - paths:
           - /var/log/atahualpa.log
@@ -14,9 +12,6 @@
     logstash_forwarder_logstash_server_port: 5000
 
   roles: 
-    - { role : bastly.zeromq, sudo: yes }
-    - { role : bastly.nodezeromq, sudo: yes }
-    - { role : bastly.pythondev, sudo: yes }
     - { role : bastly.logstash-forwarder, sudo: yes }
     - { role : bastly.git-publisher, repo_to_install: "git@github.com:Bastly/atahualpa.git", app_installation_dir : "/vagrant/atahualpa"}
     - { role : bastly.upstart, sudo: yes, extra_options: "{{ hostvars['consul1']['ansible_ssh_host'] }}",  script_path : "/vagrant/atahualpa", service: "atahualpa"}

@@ -1,7 +1,6 @@
 ---
 - hosts: connectorrest
   vars:
-    zeromq_version: "4.0.5"
     logstash_forwarder_logstash_server: "elk"
     logstash_forwarder_logstash_server_ip: "{{ hostvars['elk1']['ansible_ssh_host'] }}"
     logstash_forwarder_logstash_server_port: 5000
@@ -12,9 +11,6 @@
           type: restConn
 
   roles: 
-    - { role : bastly.zeromq, sudo: yes }
-    - { role : bastly.nodezeromq, sudo: yes }
-    - { role : bastly.pythondev, sudo: yes }
     - { role : bastly.logstash-forwarder, sudo: yes }
     - { role : bastly.git-publisher, repo_to_install: "git@github.com:Bastly/connector-rest.git", app_installation_dir : "/vagrant/connectorRest"}
     - { role : bastly.upstart, sudo: yes, extra_options: "--atahualpa {{ hostvars['atahualpa1']['ansible_ssh_host'] }} --orion {{ hostvars['orion1']['ansible_ssh_host'] }} --callback {{ hostvars['connector1']['ansible_ssh_host'] }}:1026",  script_path : "/vagrant/connectorRest", service: "connectorRest"}
