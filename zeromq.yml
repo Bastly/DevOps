@@ -1,0 +1,9 @@
+---
+- hosts: zeromq
+  vars:
+    zeromq_version: "4.0.5"
+
+  roles: 
+    - { role : bastly.zeromq, sudo: yes }
+    - { role : bastly.nodezeromq, sudo: yes }
+    - { role : bastly.pythondev, sudo: yes }
