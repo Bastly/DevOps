@@ -31,6 +31,28 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     orion1.vm.box = "nrel/CentOS-6.5-x86_64"
     orion1.vm.network "public_network", ip: settings['orion1']['ip'], bridge: settings['bridge']
   end
+
+  config.vm.define "consul1" do |consul1|
+    config.vm.synced_folder "sharedFolder/consul/", "/vagrant"
+    if settings['provider'] == 'openstack'
+      consul1.ssh.username = 'ubuntu'
+      consul1.vm.box = 'boxes/openstack'
+      consul1.vm.provider :openstack do |os|
+        os.openstack_auth_url = 'http://192.168.1.201:5000/v2.0/tokens'
+        os.username           = 'deployer'
+        os.password           = 'deployer'
+        os.tenant_name        = 'deployment'
+        os.flavor             = 'm1.small'
+        os.image              = 'ubuntu'
+        os.keypair_name       = 'openstack'
+        os.public_key_path    = './sshkeys/openstack.key.pub'
+        os.floating_ip        = settings['consul1']['ip']
+      end
+    else
+      consul1.vm.box = "ubuntu/trusty64"
+      consul1.vm.network "public_network", ip: settings['consul1']['ip'], bridge: settings['bridge']
+    end
+  end
   
   config.vm.define "atahualpa1" do |atahualpa1|
     atahualpa1.vm.synced_folder "sharedKeys", "/vagrant2/sharedKeys"
