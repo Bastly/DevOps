@@ -18,3 +18,4 @@ bastly.nginx
 bastly.upstart
 bastly.consul-service
 bastly.consul
+bastly.jenkins
