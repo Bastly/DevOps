@@ -72,10 +72,4 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     connector1.vm.network "public_network", ip: settings['connector1']['ip'], bridge: settings['bridge']
   end
 
-  config.vm.provision :ansible do |ansible|
-    ansible.verbose = "vvvv"
-    ansible.playbook = "site.yml"
-    ansible.inventory_path = "ansible_static_inventory"
-  end
-
 end
