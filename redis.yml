@@ -1,0 +1,38 @@
+---
+# installs redis and configures it
+- hosts: redis
+  sudo: true
+
+  tasks:
+    - apt: update_cache=yes
+
+    - name: install make
+      apt: pkg={{ item }}
+      sudo: true
+      with_items:
+        - make
+        - build-essential
+
+    - name: Creates directory
+      file: path=/vagrant/redis state=directory
+
+    - name: download redis 3.0
+      get_url: url=http://download.redis.io/releases/redis-3.0.1.tar.gz dest=/vagrant/redis mode=0440
+
+    - name: extract tar
+      unarchive: src=/vagrant/redis/redis-3.0.1.tar.gz dest=/vagrant/redis copy=no
+
+    - name: Install redisServer
+      command: make
+      args:
+        chdir: /vagrant/redis/redis-3.0.1
+
+    - name: Install redisServer
+      command: make install
+      args:
+        chdir: /vagrant/redis/redis-3.0.1
+
+    - name: Install redis and spawn server
+      shell: echo -n | sudo utils/install_server.sh
+      args:
+        chdir: /vagrant/redis/redis-3.0.1
