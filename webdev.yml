@@ -41,4 +41,6 @@
       sudo: true
       shell: npm install -g karma-cli
 
-
+    - name: install scss-lint
+      sudo: true
+      shell: gem install scss-lint
