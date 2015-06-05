@@ -13,3 +13,4 @@
 - include: connectorRest.yml
 - include: jenkins.yml
 - include: redis.yml
+- include: curaca.yml
