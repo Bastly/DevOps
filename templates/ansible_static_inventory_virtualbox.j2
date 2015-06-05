@@ -6,6 +6,8 @@ webdev1 ansible_ssh_host={{ webdev1.ip }} ansible_ssh_user=vagrant ansible_ssh_p
 consul1 ansible_ssh_host={{ consul1.ip }} ansible_ssh_user=vagrant ansible_ssh_private_key_file=.vagrant/machines/consul1/virtualbox/private_key
 orion1 ansible_ssh_host={{ orion1.ip }} ansible_ssh_user=vagrant ansible_ssh_private_key_file=.vagrant/machines/orion1/virtualbox/private_key
 connector1 ansible_ssh_host={{ connector1.ip }} ansible_ssh_user=vagrant ansible_ssh_private_key_file=.vagrant/machines/orion1/virtualbox/private_key
+curaca1 ansible_ssh_host={{ curaca1.ip }} ansible_ssh_user=vagrant ansible_ssh_private_key_file=.vagrant/machines/orion1/virtualbox/private_key
+redis1 ansible_ssh_host={{ redis1.ip }} ansible_ssh_user=vagrant ansible_ssh_private_key_file=.vagrant/machines/orion1/virtualbox/private_key
 
 [consulServer]
 consul1
@@ -45,3 +47,9 @@ orion1
 
 [connectorRest]
 connector1
+
+[redis]
+redis1
+
+[curaca]
+curaca1

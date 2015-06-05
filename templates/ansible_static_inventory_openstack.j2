@@ -7,6 +7,7 @@ consul1 ansible_ssh_host={{ consul1.ip }} ansible_ssh_user=ubuntu ansible_ssh_pr
 orion1 ansible_ssh_host={{ orion1.ip }} ansible_ssh_user=centos ansible_ssh_private_key_file=sshkeys/openstack.key
 connector1 ansible_ssh_host={{ connector1.ip }} ansible_ssh_user=ubuntu ansible_ssh_private_key_file=sshkeys/openstack.key
 redis1 ansible_ssh_host={{ redis1.ip }} ansible_ssh_user=ubuntu ansible_ssh_private_key_file=sshkeys/openstack.key
+curaca1 ansible_ssh_host={{ curaca1.ip }} ansible_ssh_user=ubuntu ansible_ssh_private_key_file=sshkeys/openstack.key
 
 [consulServer]
 consul1
@@ -37,3 +38,6 @@ webdev1
 
 [redis]
 redis1
+
+[curaca]
+curaca1

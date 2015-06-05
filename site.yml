@@ -14,3 +14,4 @@
 - include: orion.yml
 - include: connectorRest.yml
 - include: redis.yml
+- include: curaca.yml
