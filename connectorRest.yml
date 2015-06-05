@@ -11,9 +11,6 @@
           type: restConn
 
   roles: 
-    - { role : bastly.nodejs, sudo: yes }
-    - { role : bastly.zeromq, sudo: yes }
-    - { role : bastly.nodezeromq, sudo: yes }
     - { role : bastly.pythondev, sudo: yes }
     #- { role : bastly.openssl-gather, sudo: yes }
     #- { role : bastly.logstash-forwarder, sudo: yes }
