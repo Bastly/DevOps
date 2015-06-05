@@ -40,3 +40,12 @@
     - name: install karma-cli
       sudo: true
       shell: npm install -g karma-cli
+    
+    - name: clone secret keys if not already cloned
+      git: repo=git@bitbucket.org:bastly/secret-keys.git dest=~/secret-keys accept_hostkey=True version=master
+    
+    - name: create .aws folder 
+      command: mkdir ~/.aws
+
+    - name: copy .npmrc to ~/
+      command: cp ~/secret-keys/s3PublisherCredentials ~/.aws/credentials
