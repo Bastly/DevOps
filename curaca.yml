@@ -12,7 +12,7 @@
 
   roles: 
     - { role : bastly.pythondev, sudo: yes }
-    - { role : bastly.openssl-gather, sudo: yes }
+#    - { role : bastly.openssl-gather, sudo: yes }
     - { role : bastly.logstash-forwarder, sudo: yes }
     - { role : bastly.git-publisher, repo_to_install: "git@bitbucket.org:bastly/curaca.git", repo_branch: "HEAD", app_installation_dir : "/vagrant/curaca"}
-    - { role : bastly.upstart, sudo: yes, extra_options: "--redis {{ hostvars['redis1']['ansible_eth1']['ipv4']['address'] }}",  script_path : "/vagrant/curaca", service: "curaca"}
+    - { role : bastly.upstart, sudo: yes, extra_options: "--redis {{ hostvars['redis1']['ansible_eth0']['ipv4']['address'] }}",  script_path : "/vagrant/curaca", service: "curaca"}
