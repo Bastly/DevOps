@@ -99,7 +99,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chaski2.vm.network "public_network", ip: settings['chaski2']['ip'], bridge: settings['bridge']
   end
 
-
   config.vm.define "consul1" do |consul1|
     config.vm.synced_folder "sharedFolder/consul/", "/vagrant"
     consul1.vm.box = "ubuntu/trusty64"

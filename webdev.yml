@@ -1,0 +1,51 @@
+---
+- hosts: webdev
+  vars:
+    nodejs_version: "0.10."
+    nodejs_install_method : "package"
+
+  roles: 
+    - { role : bastly.nodejs, sudo: yes }
+    - { role : bastly.git-publisher, repo_to_install: "git@github.com:Bastly/sdk-js-browser.git", repo_branch: "HEAD", app_installation_dir : "/vagrant/sdk-js"}
+
+  tasks:
+    - name: importing vars
+      include_vars: vagrantConfig.yml
+
+    - name: phantomjs dependencies
+      apt: pkg={{ item }}
+      sudo: true
+      with_items:
+        - git
+        - libfontconfig1-dev 
+
+    - name: config git email 
+      shell: git config --global user.email {{ git.userEmail }}
+
+    - name: config git name 
+      shell: git config --global user.name {{ git.name }}
+
+    - name: update npm
+      sudo: true
+      shell: npm install -g npm 
+
+    - name: install gulp 
+      sudo: true
+      shell: npm install -g gulp 
+
+    - name: install browser-sync 
+      sudo: true
+      shell: npm install -g browser-sync 
+
+    - name: install karma-cli
+      sudo: true
+      shell: npm install -g karma-cli
+    
+    - name: clone secret keys if not already cloned
+      git: repo=git@bitbucket.org:bastly/secret-keys.git dest=~/secret-keys accept_hostkey=True version=master
+    
+    - name: create .aws folder 
+      command: mkdir ~/.aws
+
+    - name: copy .npmrc to ~/
+      command: cp ~/secret-keys/s3PublisherCredentials ~/.aws/credentials
