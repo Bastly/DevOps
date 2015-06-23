@@ -1,0 +1,7 @@
+---
+# file: devEnv.yml
+- include: site.yml
+- include: webdev.yml
+- include: vim.yml
+- include: dev.yml
+- include: npm-publisher.yml
