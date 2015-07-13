@@ -78,5 +78,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     connector1.vm.box = "ubuntu/trusty64"
     connector1.vm.network "public_network", ip: settings['connector1']['ip'], bridge: settings['bridge']
   end
+  
+  config.vm.provision :ansible do |ansible|
+    ansible.verbose = "vvvv"
+    ansible.playbook = "site.yml"
+    ansible.host_key_checking = false
+    ansible.inventory_path = "ansible_static_inventory"
+    config.ssh.forward_agent = true
+  end
 
 end
