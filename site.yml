@@ -13,4 +13,4 @@
 - include: orion.yml
 - include: connectorRest.yml
 - include: jenkins.yml
-#- include: redis.yml
+- include: redis.yml

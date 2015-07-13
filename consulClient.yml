@@ -24,8 +24,8 @@
     consul_bootstrap: false
     consul_datacenter: "BastlyInfra"
     consul_node_name: "{{inventory_hostname}}"
-    consul_servers: ["{{ hostvars['consul1'][consul_private_net_interface]['ipv4']['address'] }}"]
-    consul_bind_address: "{{ hostvars[inventory_hostname][consul_private_net_interface]['ipv4']['address'] }}"
+    consul_servers: ["{{ hostvars['consul1'][private_net_interface]['ipv4']['address'] }}"]
+    consul_bind_address: "{{ hostvars[inventory_hostname][private_net_interface]['ipv4']['address'] }}"
     consul_advertise_address: "{{ hostvars[inventory_hostname]['ansible_eth0']['ipv4']['address'] }}"
     consul_join_at_start: true
     # configure service

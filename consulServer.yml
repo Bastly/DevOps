@@ -14,7 +14,7 @@
     consul_datacenter: "BastlyInfra"
     consul_bootstrap: true
     consul_node_name: "{{inventory_hostname}}"
-    consul_bind_address:  "{{ hostvars['consul1'][consul_private_net_interface]['ipv4']['address'] }}"
+    consul_bind_address:  "{{ hostvars['consul1'][private_net_interface]['ipv4']['address'] }}"
     nginx_remove_default: yes
     htpasswd:
       - name: admin
