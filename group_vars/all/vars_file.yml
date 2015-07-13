@@ -1,0 +1,2 @@
+---
+consul_private_net_interface: ansible_eth0
