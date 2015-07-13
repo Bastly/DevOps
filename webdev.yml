@@ -2,7 +2,8 @@
 - hosts: webdev
 
   roles: 
-    - { role : bastly.git-publisher, repo_to_install: "git@github.com:Bastly/sdk-js-browser.git", app_installation_dir : "/vagrant/sdk-js"}
+    - { role : bastly.nodejs, sudo: yes }
+    - { role : bastly.git-publisher, repo_to_install: "git@github.com:Bastly/sdk-js-browser.git", repo_branch: "HEAD", app_installation_dir : "/vagrant/sdk-js"}
 
   tasks:
     - name: importing vars
@@ -36,5 +37,12 @@
     - name: install karma-cli
       sudo: true
       shell: npm install -g karma-cli
+    
+    - name: clone secret keys if not already cloned
+      git: repo=git@bitbucket.org:bastly/secret-keys.git dest=~/secret-keys accept_hostkey=True version=master
+    
+    - name: create .aws folder 
+      command: mkdir ~/.aws
 
-
+    - name: copy .npmrc to ~/
+      command: cp ~/secret-keys/s3PublisherCredentials ~/.aws/credentials
