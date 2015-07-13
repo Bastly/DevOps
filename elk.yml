@@ -15,7 +15,7 @@
     logstash_ssl_key_file: lumberjack.key
 
   roles:
-    - { role : bastly.openssl }
+    #- { role : bastly.openssl }
     - bastly.logstash
     - bastly.java
     - bastly.nginx
