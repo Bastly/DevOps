@@ -1,9 +1,6 @@
 ---
 - hosts: curaca
   vars:
-    nodejs_version: "0.10."
-    nodejs_install_method : "package"
-    zeromq_version: "4.0.5"
     logstash_forwarder_logstash_server: "elk"
     logstash_forwarder_logstash_server_ip: "{{ hostvars['elk1']['ansible_ssh_host'] }}"
     logstash_forwarder_logstash_server_port: 5000
@@ -12,13 +9,19 @@
           - /var/log/chaski.log
         fields:
           type: restConn
+  
+  pre_tasks:
+    - name: user panel dependencies
+      apt: pkg={{ item }}
+      sudo: true
+      with_items:
+        - mongodb-server
 
   roles: 
-    - { role : bastly.nodejs, sudo: yes }
-    - { role : bastly.zeromq, sudo: yes }
-    - { role : bastly.nodezeromq, sudo: yes }
-    - { role : bastly.pythondev, sudo: yes }
-    - { role : bastly.openssl-gather, sudo: yes }
-    - { role : bastly.logstash-forwarder, sudo: yes }
+#    - { role : bastly.pythondev, sudo: yes }
+#    - { role : bastly.openssl-gather, sudo: yes }
+#    - { role : bastly.logstash-forwarder, sudo: yes }
     - { role : bastly.git-publisher, repo_to_install: "git@bitbucket.org:bastly/curaca.git", repo_branch: "HEAD", app_installation_dir : "/vagrant/curaca"}
     - { role : bastly.upstart, sudo: yes, extra_options: "--redis {{ hostvars['redis1']['ansible_eth0']['ipv4']['address'] }}",  script_path : "/vagrant/curaca", service: "curaca"}
+    - { role : bastly.git-publisher, repo_to_install: "git@bitbucket.org:bastly/user-panel-backend.git", repo_branch: "master", app_installation_dir : "/vagrant/user-panel-backend"}
+    - { role : bastly.upstart, sudo: yes, extra_options: "--curaca 127.0.0.1",  script_path : "/vagrant/user-panel-backend", service: "user-panel-backend"}
