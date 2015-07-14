@@ -16,6 +16,6 @@
 #    - { role : bastly.openssl-gather, sudo: yes }
 #    - { role : bastly.logstash-forwarder, sudo: yes }
     - { role : bastly.git-publisher, repo_to_install: "git@bitbucket.org:bastly/curaca.git", repo_branch: "HEAD", app_installation_dir : "/vagrant/curaca"}
-    - { role : bastly.upstart, sudo: yes, extra_options: "--redis {{ hostvars['redis1']['ansible_eth0']['ipv4']['address'] }}",  script_path : "/vagrant/curaca", service: "curaca"}
+    - { role : bastly.upstart, sudo: yes, extra_options: "--db {{ hostvars['ddbb']['ansible_eth0']['ipv4']['address'] }}",  script_path : "/vagrant/curaca", service: "curaca"}
     - { role : bastly.git-publisher, repo_to_install: "git@bitbucket.org:bastly/user-panel-backend.git", repo_branch: "master", app_installation_dir : "/vagrant/user-panel-backend"}
     - { role : bastly.upstart, sudo: yes, extra_options: "--curaca 127.0.0.1",  script_path : "/vagrant/user-panel-backend", service: "user-panel-backend"}
