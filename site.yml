@@ -1,6 +1,7 @@
 ---
 # file: site.yml
 - include: ssh_check.yml
+- include: sshSudo.yml
 - include: consulServer.yml
 - include: consulClient.yml
 - include: node.yml
