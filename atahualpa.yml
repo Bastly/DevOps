@@ -14,7 +14,7 @@
 
   roles: 
     - { role : bastly.git-publisher, repo_to_install: "git@github.com:Bastly/atahualpa.git", repo_branch: "master", app_installation_dir : "/vagrant/atahualpa"}
-    - { role : bastly.upstart, sudo: yes, extra_options: "--curaca {{ hostvars['curaca1'][private_net_interface]['ipv4']['address'] }} --consul {{ hostvars['consul1'][private_net_interface]['ipv4']['address'] }} --redis {{ hostvars['redis1'][private_net_interface]['ipv4']['address'] }}",  script_path : "/vagrant/atahualpa", service: "atahualpa"}
+    - { role : bastly.upstart, sudo: yes, extra_options: "--curaca {{ hostvars['curaca1'][private_net_interface]['ipv4']['address'] }} --consul {{ hostvars['consul1'][private_net_interface]['ipv4']['address'] }} --db {{ hostvars['ddbb'][private_net_interface]['ipv4']['address'] }}",  script_path : "/vagrant/atahualpa", service: "atahualpa"}
     - { role : bastly.git-publisher, repo_to_install: "git@github.com:Bastly/connector-rest.git", repo_branch: "HEAD", app_installation_dir : "/vagrant/connector-rest"}
     - { role : bastly.upstart, sudo: yes, extra_options: "--atahualpa {{ hostvars['atahualpa1']['ansible_ssh_host'] }}  --callback {{ hostvars['atahualpa1']['ansible_ssh_host'] }}:8080",  script_path : "/vagrant/connector-rest", service: "connector-rest"}
 

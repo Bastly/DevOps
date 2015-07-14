@@ -1,7 +1,14 @@
 ---
 # installs redis and configures it
-- hosts: redis
+- hosts: ddbb
   sudo: true
+
+  pre_tasks:
+    - name: user panel dependencies
+      apt: pkg={{ item }}
+      sudo: true
+      with_items:
+        - mongodb-server
 
   tasks:
     - apt: update_cache=yes

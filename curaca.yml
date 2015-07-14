@@ -10,13 +10,6 @@
           - /var/log/chaski.log
         fields:
           type: restConn
-  
-  pre_tasks:
-    - name: user panel dependencies
-      apt: pkg={{ item }}
-      sudo: true
-      with_items:
-        - mongodb-server
 
   roles: 
 #    - { role : bastly.pythondev, sudo: yes }
