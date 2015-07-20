@@ -19,6 +19,7 @@
       with_items:
         - make
         - build-essential
+        - awscli
 
     - name: Creates directory
       file: path=/vagrant/redis state=directory
@@ -43,3 +44,34 @@
       shell: echo -n | sudo utils/install_server.sh
       args:
         chdir: /vagrant/redis/redis-3.0.1
+
+    # create a directory if it doesn't exist
+    - file: path=/scripts state=directory mode=0774
+
+    # create a directory if it doesn't exist
+    - file: path=/backup state=directory mode=0774
+
+    # Copy db save script
+    - copy: src=./scripts/perform_copy.sh dest=/scripts/perform_copy.sh owner=root group=root mode=0644
+
+    # Adds cron for redis backup
+    - cron: name="redisBackup" minute="0" hour="5" job="redis-cli bgsave"
+
+    # Adds cron for redis backup
+    - cron: name="store backup redis" minute="30" hour="5" job="/scripts/perform_copy.sh"
+
+    # Copy mongo config
+    - template: src=./configFiles/mongodb.conf.j2 dest=/etc/mongodb.conf owner=root group=root mode=0644
+
+    # Restart mongo with new interface
+    - service: name=mongodb state=restarted
+
+    # tasks file for roles/bastly.git-publisher
+    - name: clone secret keys if not already cloned
+      git: repo=git@bitbucket.org:bastly/secret-keys.git dest=~/secret-keys accept_hostkey=True version=master
+
+    - name: copy amazon keys to aws config
+      command: cp ~/secret-keys/s3BackupCredentials ~/.aws/credentials
+
+    # copy amazon dest file
+    - copy: src=./configFiles/amazonZone.config dest=~/.aws/config owner=root group=root mode=0644
