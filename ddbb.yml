@@ -20,6 +20,7 @@
         - make
         - build-essential
         - awscli
+        - git
 
     - name: Creates directory
       file: path=/vagrant/redis state=directory
